@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="description" content="វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ គឺជាគ្រឹះស្ថានអប់រំនៅខេត្តតាកែវ ផ្តល់ការបណ្តុះបណ្តាលជំនាញកសិកម្ម និងការិយាល័យជួរមុខ។">
-    <meta name="keywords" content="វិ.បច្ចេកទេស.ឯកជនសន្តហ្វ្រង់ស្វ័រ, សន្តហ្វ្រង់ស្វ័រ, សន្តហ្វ្រង់ស្វ័របច្ចេកទេស, Saint Francois Technical High School, Takeo Technical School, សាលាបច្ចេកទេសនៅតាកែវ, វិទ្យាល័យនៅត្រាំកក់">
+    <meta name="keywords" content="វិ.បច្ចេកទេស.ឯកជនសន្តហ្វ្រង់ស្វ័រ, សាលាបច្ចេកទេសសន្តហ្វ្រង់ស្វ័រ, សន្តហ្វ្រង់ស្វ័របច្ចេកទេស, Saint Francois Technical High School, Takeo Technical School, សាលាបច្ចេកទេសនៅតាកែវ, វិទ្យាល័យនៅត្រាំកក់">
 
     <link rel="shortcut icon" href="images/image1.png.png" />
     <link href="https://fonts.googleapis.com/css2?family=Khmer+OS+Siemreap&family=Khmer+OS+Muol&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
         .header-left {
             display: flex;
             align-items: center;
-            overflow: hidden;
+            overflow: hidden; /* Prevent text overflow issues */
         }
 
         .school-logo {
@@ -69,18 +69,20 @@
             font-family: 'Khmer OS Muol Light', sans-serif;
             font-size: 1.4em;
             margin-bottom: 5px;
+            white-space: nowrap;
         }
 
         .school-name-english {
             font-family: 'Time new roman';
             font-size: 1em;
             opacity: 0.8;
+            white-space: nowrap;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 15px; /* Spacing between items */
         }
         .menu-toggle { display: none; }
         .lang-switcher img {
@@ -152,16 +154,17 @@
             .container { padding: 0 10px; }
 
             /* --- Header --- */
-            .main-header { padding: 8px 0; }
-            .header-content { gap: 10px; }
-            .school-logo { height: 45px; width: 45px; margin-right: 8px; }
-            .school-info { line-height: 1.25; }
-            .school-name-khmer { font-size: 0.75em; margin-bottom: 1px; }
-            .school-name-english { font-size: 0.55em; }
-            .header-right { gap: 8px; }
-            .lang-container { display: flex; gap: 8px; }
-            .lang-switcher img { height: 18px; width: 27px; }
-            .menu-toggle { display: block; background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0 5px; }
+            .main-header { padding: 5px 0; }
+            .header-content { gap: 5px; }
+            .school-logo { height: 40px; width: 40px; margin-right: 8px; }
+            .school-info { line-height: 1.3; }
+            .school-name-khmer { font-size: 0.7em; margin-bottom: 0; white-space: nowrap; } /* Single line, smaller */
+            .school-name-english { font-size: 0.5em; white-space: nowrap; } /* Single line, smaller */
+            
+            .header-right { gap: 5px; }
+            .lang-container { display: flex; gap: 5px; }
+            .lang-switcher img { height: 16px; width: 24px; }
+            .menu-toggle { display: block; background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 5px; }
             
             /* --- Ticker --- */
             .ticker-content { font-size: 0.9em; }
@@ -176,12 +179,8 @@
             /* --- General Content --- */
             .page-content { padding: 15px; }
 
-            /* --- Footer Icons (NEW) --- */
-            .social-icons a img {
-                height: 35px;
-                width: 35px;
-                padding: 4px; /* Adjust padding for smaller icon */
-            }
+            /* --- Footer Icons --- */
+            .social-icons a img { height: 35px; width: 35px; padding: 4px; }
         }
     </style>
 </head>
@@ -241,7 +240,7 @@
             
             <div id="about" class="page-content" style="display:none;">
                  <h2 data-lang="aboutHeading">ប្រវត្តិសាលា</h2>
-                <p class="indented-p" data-lang="aboutText">ក្នុងឆ្នាំ ២០០៣ ព្រះសហគមន៍កាតូលិកចំការទៀង ដែលមានលោកអភិបាល អូលីវីយេ ក្នុងនាមជាអ្នកទទួលខុសត្រូវ ហើយលោកជាប្រធានគណៈកម្មការអប់រំសិក្សាធិការព្រះសហគមន៍កាតូលិកភូមិភាគភ្នំពេញ។ ដោយសង្កេតឃើញភាពក្រីក្រលំបាក សិស្សបោះបង់ការសិក្សាច្រើន ដោយសារពុំមានលទ្ធភាពបន្តការសិក្សានៅភ្នំពេញ លោកអភិបាលមានគំនិតបង្កើតវិទ្យាល័យបច្ចេកទេស។ ប៉ុន្តែពេលនោះ ពុំមានមធ្យោបាយអាចដំណើរការទៅបាន។ លោកអភិបាលក៏សម្រេចចិត្តបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ សន្តហ្វ្រង់ស្វ័រ ដោយបន្ថែមកម្មវិធីសិក្សាជំនាញមួយចំនួនដូចជា កសិកម្ម លេខាធិការ និងតម្បាញសូត្រ។ ចាប់តាំងពីឆ្នាំ ២០០៣ រហូតដល់ឆ្នាំ ២០១៥ លោកអភិបាលបន្តចិញ្ចឹមចិត្តបង្កើតសាលាបច្ចេកទេស ក្នុងគោលបំណងឱ្យសិស្សក្រីក្រ និង សិស្សពុំមានសមត្ថភាពរៀនផ្នែកចំណេះទូទៅទទួលបានឱកាសសិក្សាផ្នែកអប់រំបច្ចេកទេសដើម្បីឱ្យពួកគេទទួលបាន ជំនាញយ៉ាងពិតប្រាកដដើម្បីឱ្យពួកគេមានលទ្ធភាព សមត្ថភាពកសាងជីវភាពរស់នៅ និងកាត់បន្ថយភាពក្រីក្រនៅតាមជនបទ។ ក្នុងឆ្នាំ២០១៥ ក្រសួងអប់រំយុវជន និងកីឡា បានធ្វើកំណែទម្រង់ដោយផ្តោតសំខាន់លើការបណ្តុះបណ្តាលផ្នែកអប់រំបច្ចេកទេស។ ដោយមើលឃើញឱកាសដ៏ល្អនេះ លោកអភិបាលអូលីវីយ៉េបានចាប់ផ្តើមបង្កើតគណៈកម្មការមួយដើម្បីធ្វើការសម្របសម្រួលសុំបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស្វ័រនេះឡើង ហើយបានសម្រេចជាស្ថាពរក្នុងឆ្នាំ ២០១៥ តាមសារាចរណ៍លេខ ២៥១៩ អយកប្រក ចុះថ្ងៃទី ០២ ខែកញ្ញា ឆ្នាំ ២០១៥ ។</p>
+                <p class="indented-p" data-lang="aboutText">ក្នុងឆ្នាំ ២០០៣ ព្រះសហគមន៍កាតូលិកចំការទៀង ដែលមានលោកអភិបាល អូលីវីយេ ក្នុងនាមជាអ្នកទទួលខុសត្រូវ ហើយលោកជាប្រធានគណៈកម្មការអប់រំសិក្សាធិការព្រះសហគមន៍កាតូលិកភូមិភាគភ្នំពេញ។ ដោយសង្កេតឃើញភាពក្រីក្រលំបាក សិស្សបោះបង់ការសិក្សាច្រើន ដោយសារពុំមានលទ្ធភាពបន្តការសិក្សានៅភ្នំពេញ លោកអភិបាលមានគំនិតបង្កើតវិទ្យាល័យបច្ចេកទេស។ ប៉ុន្តែពេលនោះ ពុំមានមធ្យោបាយអាចដំណើរការទៅបាន។ លោកអភិបាលក៏សម្រេចចិត្តបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ សន្តហ្វ្រង់ស្វ័រ ដោយបន្ថែមកម្មវិធីសិក្សាជំនាញមួយចំនួនដូចជា កសិកម្ម លេខាធិការ និងតម្បាញសូត្រ។ ចាប់តាំងពីឆ្នាំ ២០០៣ រហូតដល់ឆ្នាំ ២០១៥ លោកអភិបាលបន្តចិញ្ចឹមចិត្តបង្កើតសាលាបច្ចេកទេស ក្នុងគោលបំណងឱ្យសិស្សក្រីក្រ និង សិស្សពុំមានសមត្ថភាពរៀនផ្នែកចំណេះទូទៅទទួលបានឱកាសសិក្សាផ្នែកអប់រំបច្ចេកទេសដើម្បីឱ្យពួកគេទទួលបាន ជំនាញយ៉ាងពិតប្រាកដដើម្បីឱ្យពួកគេមានលទ្ធភាព សមត្ថភាពកសាងជីវភាពរស់នៅ និងកាត់បន្ថយភាពក្រីក្រនៅតាមជនបទ។ ក្នុងឆ្នាំ២០១៥ ក្រសួងអប់រំយុវជន និងកីឡា បានធ្វើកំណែទម្រង់ដោយផ្តោតសំខាន់លើការបណ្តុះបណ្តាលផ្នែកអប់រំបច្ចេកទេស។ ដោយមើលឃើញឱកាសដ៏ល្អនេះ លោកអភិបាលអូលីវីយ៉េបានចាប់ផ្តើមបង្កើតគណៈកម្មការមួយដើម្បីធ្វើការសម្របសម្រួលសុំបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស្វ័រនេះឡើង ហើយបានសម្រេចជាស្ថាពរក្នុងឆ្នាំ ២០០៥ តាមសារាចរណ៍លេខ ២៥១៩ អយកប្រក ចុះថ្ងៃទី ០២ ខែកញ្ញា ឆ្នាំ ២០១៥ ។</p>
                 <div class="image-gallery">
                     <img src="images/image1.2.png" alt="School History Image 1" onclick="openPopup(this.src)"><img src="images/image1.3.png" alt="School History Image 2" onclick="openPopup(this.src)"><img src="images/image1.5.png" alt="School History Image 3" onclick="openPopup(this.src)"><img src="images/image1.6.png" alt="School History Image 4" onclick="openPopup(this.src)">
                 </div>
