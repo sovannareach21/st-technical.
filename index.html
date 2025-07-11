@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="description" content="វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ គឺជាគ្រឹះស្ថានអប់រំនៅខេត្តតាកែវ ផ្តល់ការបណ្តុះបណ្តាលជំនាញកសិកម្ម និងការិយាល័យជួរមុខ។">
-    <meta name="keywords" content="វិ.បច្ចេកទេស.ឯកជនសន្តហ្វ្រង់ស្វ័រ, សាលាបច្ចេកទេសសន្តហ្វ្រង់ស្វ័រ, សន្តហ្វ្រង់ស្វ័របច្ចេកទេស, Saint Francois Technical High School, Takeo Technical School, សាលាបច្ចេកទេសនៅតាកែវ, វិទ្យាល័យនៅត្រាំកក់">
+    <meta name="keywords" content="វិ.បច្ចេកទេស.ឯកជនសន្តហ្វ្រង់ស្វ័រ, សន្តហ្វ្រង់ស្វ័រ, សន្តហ្វ្រង់ស្វ័របច្ចេកទេស, Saint Francois Technical High School, Takeo Technical School, សាលាបច្ចេកទេសនៅតាកែវ, វិទ្យាល័យនៅត្រាំកក់">
 
     <link rel="shortcut icon" href="images/image1.png.png" />
     <link href="https://fonts.googleapis.com/css2?family=Khmer+OS+Siemreap&family=Khmer+OS+Muol&display=swap" rel="stylesheet">
@@ -51,6 +51,7 @@
         .header-left {
             display: flex;
             align-items: center;
+            overflow: hidden;
         }
 
         .school-logo {
@@ -79,10 +80,9 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
-        .menu-toggle { display: none; } /* Hide on desktop */
-
+        .menu-toggle { display: none; }
         .lang-switcher img {
             height: 20px;
             width: 30px;
@@ -90,6 +90,7 @@
             border-radius: 3px;
             transition: transform 0.2s ease;
             cursor: pointer;
+            display: block;
         }
 
         /* Ticker Bar Styles */
@@ -116,16 +117,8 @@
         .submit-button-container { text-align: center; margin-top: 20px; }
         .submit-button { background: linear-gradient(45deg, #28a745, #218838); color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1em; font-weight: bold; font-family: 'Khmer OS Siemreap', sans-serif; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; }
         .submit-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
-
-        #form-success-message {
-            display: none; /* Hidden by default */
-            text-align: center;
-            padding: 40px 20px;
-        }
-        #form-success-message img {
-            max-width: 100%;
-            height: auto;
-        }
+        #form-success-message { display: none; text-align: center; padding: 40px 20px; }
+        #form-success-message img { max-width: 100%; height: auto; }
         
         /* Other generic styles */
         .indented-p { text-indent: 2em; margin-bottom: 15px; text-align: justify; }
@@ -159,56 +152,36 @@
             .container { padding: 0 10px; }
 
             /* --- Header --- */
-            .header-content { flex-wrap: nowrap; }
-            .school-logo { height: 45px; width: 45px; margin-right: 10px; }
-            .school-info { line-height: 1.3; } /* Tighter line height */
-            .school-name-khmer { font-size: 0.8em; margin-bottom: 0; }
-            .school-name-english { font-size: 0.6em; }
-            .header-right { flex-shrink: 0; }
-            .lang-switcher { margin-right: 40px; } /* Space for hamburger */
+            .main-header { padding: 8px 0; }
+            .header-content { gap: 10px; }
+            .school-logo { height: 45px; width: 45px; margin-right: 8px; }
+            .school-info { line-height: 1.25; }
+            .school-name-khmer { font-size: 0.75em; margin-bottom: 1px; }
+            .school-name-english { font-size: 0.55em; }
+            .header-right { gap: 8px; }
+            .lang-container { display: flex; gap: 8px; }
             .lang-switcher img { height: 18px; width: 27px; }
+            .menu-toggle { display: block; background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0 5px; }
             
             /* --- Ticker --- */
             .ticker-content { font-size: 0.9em; }
             
-            /* --- Hamburger Menu --- */
-            .menu-toggle {
-                display: block;
-                position: absolute;
-                top: 50%;
-                right: 10px; /* Positioned within the header padding */
-                transform: translateY(-50%);
-                background: none;
-                border: none;
-                color: white;
-                font-size: 30px;
-                cursor: pointer;
-                z-index: 1001;
-                padding: 5px;
-            }
-            .main-menu ul {
-                display: none; /* Hide menu by default, JS will handle it */
-                flex-direction: column;
-                width: 100%;
-                background-color: #1976D2;
-                position: absolute; /* Position it relative to the nav bar */
-                left: 0;
-                top: 100%; /* Position it right below the nav bar */
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            }
-            .main-menu.menu-open ul {
-                display: flex; /* Show the menu */
-            }
-            .main-menu ul li a {
-                padding: 15px 25px;
-                text-align: center;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-             .main-menu ul li:first-child a { border-top: none; }
-
+            /* --- Hamburger Menu Dropdown --- */
+            .main-menu { position: relative; }
+            .main-menu ul { display: none; flex-direction: column; width: 100%; background-color: #1976D2; position: absolute; left: 0; top: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+            .main-menu.menu-open ul { display: flex; }
+            .main-menu ul li a { padding: 12px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+            .main-menu ul li:first-child a { border-top: none; }
 
             /* --- General Content --- */
             .page-content { padding: 15px; }
+
+            /* --- Footer Icons (NEW) --- */
+            .social-icons a img {
+                height: 35px;
+                width: 35px;
+                padding: 4px; /* Adjust padding for smaller icon */
+            }
         }
     </style>
 </head>
@@ -225,9 +198,11 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <a class="lang-switcher" onclick="setLanguage('en')"><img src="images/image English.png" alt="English"></a>
-                    <a class="lang-switcher" onclick="setLanguage('km')"><img src="images/image khmer flag.png" alt="Khmer"></a>
-                     <button class="menu-toggle" aria-label="Open menu">☰</button>
+                    <div class="lang-container">
+                        <a class="lang-switcher" onclick="setLanguage('en')"><img src="images/image English.png" alt="English"></a>
+                        <a class="lang-switcher" onclick="setLanguage('km')"><img src="images/image khmer flag.png" alt="Khmer"></a>
+                    </div>
+                    <button class="menu-toggle" aria-label="Open menu">☰</button>
                 </div>
             </div>
         </div>
@@ -256,7 +231,7 @@
     <div class="content-wrapper">
         <div class="container">
             <div id="home" class="page-content">
-                <img src="images/welcome.png" alt="សូមស្វាគមន៍មកកាន់វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ" class="welcome-text-image">
+                 <img src="images/welcome.png" alt="សូមស្វាគមន៍មកកាន់វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ" class="welcome-text-image">
                 <div class="slideshow-container">
                     <div class="slide fade"><img src="images/image1.2.png" alt="Welcome Image 1" onclick="openPopup(this.src)"></div>
                     <div class="slide fade"><img src="images/image1.3.png" alt="Welcome Image 2" onclick="openPopup(this.src)"></div>
@@ -345,7 +320,7 @@
             <div id="location" class="page-content" style="display:none;">
                 <h2 data-lang="locationHeading">ទីតាំង</h2>
                 <p data-lang="locationText">ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ</p>
-                <a href="https://maps.app.goo.gl/U6F4teaBfcBNGCST8" target="_blank" class="map-link" data-lang="openMap">មើលផែនទី</a>
+                <a href="http://googleusercontent.com/maps/google.com/5" target="_blank" class="map-link" data-lang="openMap">មើលផែនទី</a>
             </div>
             <div id="contact" class="page-content" style="display:none;">
                 <h2 data-lang="contactHeading">ទំនាក់ទំនង</h2>
@@ -361,61 +336,45 @@
                     <form id="sfs-form" action="https://formspree.io/f/xkgbdvnz" method="POST">
                         <fieldset class="register-form-group">
                             <legend data-lang="studentInfoLegend">ព័ត៌មានសិស្ស</legend>
-                            
                             <label for="khmer-name" data-lang="nameKhmerLabel">ឈ្មោះ (អក្សរខ្មែរ) ៖</label>
                             <input type="text" id="khmer-name" name="ឈ្មោះខ្មែរ" placeholder="ឈ្មោះពេញជាភាសាខ្មែរ" required>
-                            
                             <label for="english-name" data-lang="nameEnglishLabel">Name (អក្សរឡាតាំង) ៖</label>
                             <input type="text" id="english-name" name="ឈ្មោះឡាតាំង" placeholder="Full Name in Latin" required>
-
                             <label for="dob" data-lang="dobLabel">ថ្ងៃ ខែ ឆ្នាំកំណើត ៖</label>
                             <input type="date" id="dob" name="ថ្ងៃខែឆ្នាំកំណើត" required>
-                            
                             <label for="gender" data-lang="genderLabel">ភេទ ៖</label>
                             <select id="gender" name="ភេទ" required>
                                 <option value="">ជ្រើសរើស</option>
                                 <option value="male" data-lang="maleOption">ប្រុស</option>
                                 <option value="female" data-lang="femaleOption">ស្រី</option>
                             </select>
-
                             <label for="birth-place" data-lang="birthPlaceLabel">ទីកន្លែងកំណើត ៖</label>
                             <textarea id="birth-place" name="ទីកន្លែងកំណើត" rows="3" placeholder="សរសេរស្រុក ខេត្តដែលអ្នកបានកើត" required></textarea>
-
                             <label for="current-address" data-lang="currentAddressLabel">ទីលំនៅបច្ចុប្បន្ន ៖</label>
                             <textarea id="current-address" name="ទីលំនៅបច្ចុប្បន្ន" rows="3" placeholder="សរសេរភូមិ ឃុំ ស្រុក ខេត្ត" required></textarea>
-                            
                             <label for="junior-high" data-lang="juniorHighLabel">មកពីអនុវិទ្យាល័យ ៖</label>
                             <input type="text" id="junior-high" name="មកពីអនុវិទ្យាល័យ" placeholder="ឈ្មោះអនុវិទ្យាល័យដែលអ្នកបានបញ្ចប់" required>
-
                             <label for="personal-phone" data-lang="personalPhoneLabel">លេខទូរស័ព្ទ (ផ្ទាល់ខ្លួន) ៖</label>
                             <input type="tel" id="personal-phone" name="លេខទូរស័ព្ទផ្ទាល់ខ្លួន" placeholder="ឧ. 012 345 678" required>
-
                         </fieldset>
-
                         <fieldset class="register-form-group">
                             <legend data-lang="parentInfoLegend">ព័ត៌មានអាណាព្យាបាល</legend>
-
                             <label for="father-name" data-lang="fatherNameLabel">ឈ្មោះឪពុក ៖</label>
                             <input type="text" id="father-name" name="ឈ្មោះឪពុក" placeholder="ឈ្មោះពេញ" required>
-
                             <label for="mother-name" data-lang="motherNameLabel">ឈ្មោះម្តាយ ៖</label>
                             <input type="text" id="mother-name" name="ឈ្មោះម្តាយ" placeholder="ឈ្មោះពេញ" required>
-
                             <label for="guardian-phone" data-lang="guardianPhoneLabel">លេខទូរស័ព្ទ (អាណាព្យាបាល) ៖</label>
                             <input type="tel" id="guardian-phone" name="លេខទូរស័ព្ទអាណាព្យាបាល" placeholder="ឧ. 012 345 678" required>
                         </fieldset>
-
                         <div class="submit-button-container">
                             <button type="submit" class="submit-button" data-lang="submitButton">បញ្ជូន</button>
                         </div>
                     </form>
                 </div>
-
                 <div id="form-success-message">
-                    <img src="images/thankyou.png.png" alt="Thank You">
+                    <img src="images/thank-you.png" alt="Thank You">
                 </div>
             </div>
-
         </div>
     </div>
     
@@ -424,7 +383,7 @@
             <div class="social-icons">
                 <a href="https://web.facebook.com/profile.php?id=100057608164320" target="_blank"><img src="images/image-fb.png" alt="Facebook"></a>
                 <a href="https://www.tiktok.com/@saintfranciostechnical_0?is_from_webapp=1&sender_device=pc" target="_blank"><img src="images/tiktok.png.png" alt="TikTok"></a>
-                <a href="https://maps.app.goo.gl/U6F4teaBfcBNGCST8" target="_blank"><img src="images/image-google map.png" alt="Google Maps"></a>
+                <a href="http://googleusercontent.com/maps/google.com/5" target="_blank"><img src="images/image-google map.png" alt="Google Maps"></a>
             </div>
             <p data-lang="footerLocation">ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ​</p>
             <p data-lang="footerCopyright">© ២០២៥ Saint Francois General Knowledge And Private Technical High School រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
@@ -519,14 +478,14 @@
             });
         });
 
-        // === NEW: Form Submission with AJAX (Fetch) ===
+        // Form Submission with AJAX (Fetch)
         const form = document.getElementById('sfs-form');
         const formContainer = document.getElementById('registration-form-container');
         const successMessage = document.getElementById('form-success-message');
         
         if(form) {
             form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default form submission
+                event.preventDefault(); 
                 
                 const submitButton = form.querySelector('.submit-button');
                 submitButton.disabled = true;
@@ -542,24 +501,20 @@
                     }
                 }).then(response => {
                     if (response.ok) {
-                        // Success
                         formContainer.style.display = 'none';
                         successMessage.style.display = 'block';
                     } else {
-                        // Error
                         response.json().then(data => {
                             if (Object.hasOwn(data, 'errors')) {
                                 alert(data["errors"].map(error => error["message"]).join(", "));
                             } else {
                                 alert('មានបញ្ហាក្នុងការបញ្ជូនទិន្នន័យ សូមព្យាយាមម្តងទៀត។');
                             }
-                            // Re-enable the button on error
                             submitButton.disabled = false;
                             submitButton.textContent = 'បញ្ជូន';
                         });
                     }
                 }).catch(error => {
-                    // Network error
                     alert('មានបញ្ហាបណ្តាញ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក។');
                     submitButton.disabled = false;
                     submitButton.textContent = 'បញ្ជូន';
@@ -567,10 +522,9 @@
             });
         }
 
-        // --- Language Translation ---
+        // Language Translation
         const translations = {
              schoolNameKhmer: { km: 'វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ', en: 'Saint Francois General Knowledge And Private Technical High School' }, schoolNameEnglish: { km: 'Saint Francois General Knowledge And Private Technical High School', en: 'Saint Francois General Knowledge And Private Technical High School' }, homeLink: { km: 'ទំព័រដើម', en: 'Home' }, aboutLink: { km: 'អំពីសាលា', en: 'About Us' }, majorsLink: { km: 'ជំនាញសិក្សា', en: 'Majors' }, locationLink: { km: 'ទីតាំង', en: 'Location' }, contactLink: { km: 'ទំនាក់ទំនង', en: 'Contact' }, photosLink: { km: 'ទស្សនៈកិច្ចសិក្សា', en: 'Field Trips' }, registerLink: { km: 'ចុះឈ្មោះចូលរៀន', en: 'Register' }, aboutHeading: { km: 'ប្រវត្តិសាលា', en: 'School History' }, aboutText: { km: `ក្នុងឆ្នាំ ២០០៣ ព្រះសហគមន៍កាតូលិកចំការទៀង ដែលមានលោកអភិបាល អូលីវីយេ ក្នុងនាមជាអ្នកទទួលខុសត្រូវ ហើយលោកជាប្រធានគណៈកម្មការអប់រំសិក្សាធិការព្រះសហគមន៍កាតូលិកភូមិភាគភ្នំពេញ។ ដោយសង្កេតឃើញភាពក្រីក្រលំបាក សិស្សបោះបង់ការសិក្សាច្រើន ដោយសារពុំមានលទ្ធភាពបន្តការសិក្សានៅភ្នំពេញ លោកអភិបាលមានគំនិតបង្កើតវិទ្យាល័យបច្ចេកទេស។ ប៉ុន្តែពេលនោះ ពុំមានមធ្យោបាយអាចដំណើរការទៅបាន។ លោកអភិបាលក៏សម្រេចចិត្តបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ សន្តហ្វ្រង់ស្វ័រ ដោយបន្ថែមកម្មវិធីសិក្សាជំនាញមួយចំនួនដូចជា កសិកម្ម លេខាធិការ និងតម្បាញសូត្រ។ ចាប់តាំងពីឆ្នាំ ២០០៣ រហូតដល់ឆ្នាំ ២០១៥ លោកអភិបាលបន្តចិញ្ចឹមចិត្តបង្កើតសាលាបច្ចេកទេស ក្នុងគោលបំណងឱ្យសិស្សក្រីក្រ និង សិស្សពុំមានសមត្ថភាពរៀនផ្នែកចំណេះទូទៅទទួលបានឱកាសសិក្សាផ្នែកអប់រំបច្ចេកទេសដើម្បីឱ្យពួកគេទទួលបាន ជំនាញយ៉ាងពិតប្រាកដដើម្បីឱ្យពួកគេមានលទ្ធភាព សមត្ថភាពកសាងជីវភាពរស់នៅ និងកាត់បន្ថយភាពក្រីក្រនៅតាមជនបទ។ ក្នុងឆ្នាំ២០១៥ ក្រសួងអប់រំយុវជន និងកីឡា បានធ្វើកំណែទម្រង់ដោយផ្តោតសំខាន់លើការបណ្តុះបណ្តាលផ្នែកអប់រំបច្ចេកទេស។ ដោយមើលឃើញឱកាសដ៏ល្អនេះ លោកអភិបាលអូលីវីយ៉េបានចាប់ផ្តើមបង្កើតគណៈកម្មការមួយដើម្បីធ្វើការសម្របសម្រួលសុំបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស្វ័រនេះឡើង ហើយបានសម្រេចជាស្ថាពរក្នុងឆ្នាំ ២០១៥ តាមសារាចរណ៍លេខ ២៥១៩ អយកប្រក ចុះថ្ងៃទី ០២ ខែកញ្ញា ឆ្នាំ ២០១៥ ។`, en: `In 2003, the Catholic Community of Chamkar Teang, led by Bishop Olivier as the person in charge and Chairman of the Education Committee of the Catholic Diocese of Phnom Penh. Observing the poverty and difficulties, many students dropped out of school due to the inability to continue their studies in Phnom Penh, the Bishop conceived the idea of establishing a technical high school. However, at that time, there were no means to proceed. The Bishop decided to establish Saint Francois General Knowledge and Vocational High School, adding several vocational training programs such as Agriculture, Secretarial, and Silk Weaving. From 2003 to 2015, the Bishop continued to nurture the idea of establishing a technical school with the aim of providing poor students and those unable to pursue general education with opportunities to study technical education, enabling them to gain real skills, build their livelihoods, and alleviate poverty in rural areas. In 2015, the Ministry of Education, Youth and Sport reformed by focusing on technical education training. Seeing this excellent opportunity, Bishop Olivier began forming a committee to facilitate the establishment of Saint Francois General Knowledge and Private Technical High School, which was officially approved in 2015 by Circular No. 2519 OYK.Prak dated September 02, 2015.`}, majorsHeading: { km: 'ជំនាញសិក្សា', en: 'Majors' }, agricultureMajor: { km: 'ក្សេត្រសាស្ត្រ', en: 'Agriculture' }, agricultureCurriculum: { km: 'កម្មវិធីសិក្សា:', en: 'Curriculum:' }, agricultureCurriculumContent: { km: 'ការសិក្សាគ្រប់ជ្រុងជ្រោយអំពីការអនុវត្តកសិកម្ម ការដាំដុះដំណាំ ការចិញ្ចឹមសត្វ និងបច្ចេកទេសធ្វើកសិកម្មប្រកបដោយនិរន្តរភាព។', en: 'Comprehensive study of agricultural practices, crop cultivation, animal husbandry, and sustainable farming techniques.' }, agricultureMidterm: { km: 'មុខវិជ្ជាប្រឡងឆមាស:', en: 'Midterm Subjects:' }, agricultureMidtermContent: { km: 'ការប្រឡងគ្របដណ្តប់លើវិទ្យាសាស្ត្រដំណាំ ការគ្រប់គ្រងដី និងការចិញ្ចឹមសត្វជាមូលដ្ឋាន។', en: 'Exams cover Crop Science, Soil Management, and Basic Livestock.' }, agricultureFinal: { km: 'មុខវិជ្ជាប្រឡងបញ្ចប់:', en: 'Final Subjects:' }, agricultureFinalText: { km: 'សិស្សត្រូវប្រឡងជំនាញជាក់លាក់ និងសរសេរកិច្ចការស្រាវជ្រាវ។', en: 'Students must take a practical skills examination and submit a research paper.' }, officeMajor: { km: 'ការិយាល័យជួរមុខ', en: 'Front Office' }, officeCurriculum: { km: 'កម្មវិធីសិក្សា:', en: 'Curriculum:' }, officeCurriculumContent: { km: 'សិក្សាអំពីនីតិវិធីរដ្ឋបាល សេវាកម្មអតិថិជន ជំនាញទំនាក់ទំនង និងការគ្រប់គ្រងការិយាល័យ។', en: 'Study of administrative procedures, customer service, communication skills, and office management.' }, officeMidterm: { km: 'មុខវិជ្ជាប្រឡងឆមាស:', en: 'Midterm Subjects:' }, officeMidtermContent: { km: 'ការប្រឡងរួមមាន រដ្ឋបាលការិយាល័យ ទំនាក់ទំនងអាជីវកម្ម និងកម្មវិធីកុំព្យូទ័រ។', en: 'Exams include Office Administration, Business Communication, and Computer Applications.' }, officeFinal: { km: 'មុខវិជ្ជាប្រឡងបញ្ចប់:', en: 'Final Subjects:' }, officeFinalText: { km: 'សិស្សត្រូវប្រឡងជំនាញជាក់លាក់ និងសរសេរកិច្ចការស្រាវជ្រាវ។', en: 'Students must take a practical skills examination and submit a research paper.' }, locationHeading: { km: 'ទីតាំង', en: 'Location' }, locationText: { km: 'ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ', en: 'National Road 3, Angkor Kokir Village, Taphem Commune, Tram Kak District, Takeo Province, 3 km North of Angkor Tasom Market.' }, openMap: { km: 'មើលផែនទី', en: 'Open Map' }, contactHeading: { km: 'ទំនាក់ទំនង', en: 'Contact Us' }, emailText: { km: 'អ៊ីម៉ែល:', en: 'Email:' }, phoneText: { km: 'ទូរស័ព្ទ:', en: 'Phone:' }, photosHeading: { km: 'ទស្សនៈកិច្ចសិក្សា', en: 'Field Trips' }, group1Title: { km: 'ដំណើរទស្សនកិច្ចសិក្សា ជំនាញកសិកម្ម(ក្សេត្រសាស្ត្រ) ឆ្នាំទី៣', en: 'Field Trip for Agriculture Major, Year 3' }, group1Text: { km: `នៅថ្ងៃអង្គារ ៩រោច ខែពិសាខ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស. ២៥៦៩ ត្រូវនឹងថ្ងៃទី២០ ខែឧសភា ឆ្នាំ២០២៥។ ការចុះទស្សនកិច្ចសិក្សារបស់សិស្សឆ្នាំទី៣ ជាមួយលោកគ្រូ-អ្នកគ្រូ ដើម្បីស្វែងយល់អំពីមុខវិជ្ជាផ្សេងៗ ក៏ដូចជាចំណេះដឹងថី្មៗជាច្រើនបន្ថែមទៀតនៃវិទ្យាស្ថានបច្ចេកវិទ្យាកំពង់ស្ពឺ សម្រាប់ជួយបំភ្លឺផ្លូវរបស់ប្អូនៗនៅពេលអនាគត។ ២០.០៥.២០២៥ ➡️ (រៀនពិត អនុវត្តន៍ពិត បទពិសោធន៍ពិតៗ)`, en: `On Tuesday, the 9th waning moon of Visak, Year of the Snake, Buddhist Era 2569, corresponding to May 20, 2025. A field trip for Year 3 students with teachers to learn about various subjects and gain new knowledge from Kampong Speu Institute of Technology, to help guide their future. 20.05.2025 (True learning, true practice, true experience)` }, group2Title: { km: 'ដំណើរទស្សនកិច្ចសិក្សា ជំនាញការិយាល័យជួរមុខ ឆ្នាំទី២ ជំនាន់ទី៦', en: 'Field Trip for Front Office Major, Year 2, Batch 6' }, group2Text: { km: `នាថ្ងៃសុក្រ ១១កើត ខែជេស្ឋ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស.២៥៦៩ ត្រូវនឹងថ្ងៃទី០៦ ខែមិថុនា ឆ្នាំ២០២៥ ដំណើរទស្សនកិច្ចសិក្សារយៈពេល១ថ្ងៃ របស់សិស្សានុសិស្សជំនាញការិយាល័យជួរមុខ ឆ្នាំទី២ ជំនាន់ទី៦ នៃវិទ្យាល័យចំណេះទូទៅនិងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស័្វររួមមាន៖<br>1. ក្រុមហ៊ុន Thalias Hospitality ទស្សនៈកិច្ចសិក្សាទៅកាន់ភោជនីយដ្ឋាន Topaz ទាំងពីរទីតាំង<br>2. Topaz (ផ្លូវនរោត្តម)ស្ថិតនៅលើផ្លូវលេខ ១៦២ ផ្លូវនរោត្តម (Preah Norodom Blvd), ភ្នំពេញ<br>3. Topaz (The Commune – ទួលគោក) ស្ថិតនៅជាន់ទី១ ក្នុងអាគារ The Commune, ផ្លូវលេខ ៣៤៧, សង្កាត់ទួលគោក, ភ្នំពេញ<br>4. ក្រុមហ៊ុន Almond Hospitality ទស្សនៈកិច្ចសិក្សានៅក្នុង Yi Sang The Garden ស្ថិតលើផ្លូវលេខ 337, សង្កាត់បឹងកុក 1, ខ័ណ្ឌទួលគោក, ភ្នំពេញ<br> ➡️ គោលបំណងនៃដំណើរទស្សនកិច្ចសិក្សាមានដូចជា៖<br>1. បង្កើនការយល់ដឹងបន្ថែមដល់សិស្សានុសិស្សលើដំណើរការប្រតិបត្តិការ ផ្នែការិយាល័យជួរមុខ ផ្នែកគេហកិច្ច និងផ្នែកសេវាកម្មអាហារ និងភេសជ្ជៈ ដើម្បីជារូបភាពក្នុងការពង្រឹងនូវពុទ្ធិបន្ថែមផ្សារភ្ជាប់ការសិក្សាទ្រឹស្តី និងការអនុវត្តផ្ទាល់។<br>2. បង្កើនទំនាក់ទំនងល្អរវាងស្ថាប័នទេសចរណ៍ និងក្រុមហ៊ុនបដិសណ្ឋារកិច្ច ជាមួយនឹងវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជន សន្តហ្វ្រង់ស្វ័រ និងជាការបង្កើតកិច្ចសហប្រតិបត្តិការល្អជាមួយគ្នាទៅវិញទៅមក និងឱកាសការងារសម្រាប់សិស្សានុសិស្សដែលសិក្សាលើជំនាញបច្ចេកទេស។`, en: `On Friday, the 11th waxing moon of Jeṣṭha, Year of the Snake, Buddhist Era 2569, corresponding to June 06, 2025. A one-day field trip for Year 2, Batch 6 students of the Front Office Major from Saint Francois General Knowledge and Private Technical High School, including:<br>1. Thalias Hospitality Company: Field trip to both Topaz restaurant locations.<br>2. Topaz (Norodom Blvd) located at No. 162, Preah Norodom Blvd, Phnom Penh.<br>3. Topaz (The Commune – Tuol Kork) located on the 1st floor of The Commune building, No. 347, Sangkat Tuol Kork, Phnom Penh.<br>4. Almond Hospitality Company: Field trip to Yi Sang The Garden located at No. 337, Sangkat Boeung Kak 1, Khan Tuol Kork, Phnom Penh.<br> ➡️ The objectives of the field trip are:<br>1. To enhance students' understanding of front office operations, housekeeping, and food and beverage services, providing practical reinforcement of theoretical studies.<br>2. To foster good relationships between tourism institutions and hospitality companies with Saint Francois General Knowledge and Private Technical High School, establishing good cooperation and job opportunities for students studying technical skills.` }, group3Title: { km: 'ដំណើរទស្សនកិច្ចសិក្សា ជំនាញការិយាល័យជួរមុខ ឆ្នាំទី៣ ជំនាន់ទី៥', en: 'Field Trip for Front Office Major, Year 3, Batch 5' }, group3Text: { km: `នាថ្ងៃចន្ទ ១២កើត ខែអាសាឍ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស.២៥៦៩ ត្រូវនឹងថ្ងៃទី០៧ ខែកក្កដា ឆ្នាំ២០២៥ ដំណើរទស្សនកិច្ចសិក្សារយៈពេល១ថ្ងៃ របស់សិស្សានុសិស្សជំនាញការិយាល័យជួរមុខ ឆ្នាំទី៣ ជំនាន់ទី៥ នៃវិទ្យាល័យចំណេះទូទៅនិងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស័្វររួមមាន៖<br>1. សហគមន៍អេកូទេសចរណ៍ចំបក់<br>2. ឧទ្យានជាតិ ព្រះសុរាម្រិតកុសមៈ គិរីរម្យ<br>➡️ គោលបំណងនៃដំណើរទស្សនកិច្ចសិក្សាមានដូចជា៖<br>1. បង្កើនការយល់ដឹងបន្ថែមដល់សិស្សានុសិស្សស្វែងយល់ពីការគ្រប់គ្រងក្នុងសហគមន៍អេកូទេសចរណ៍ចំបក់ដើម្បីទទួលបានបទពិសោធន៍ថ្មីៗពាក់ព័ន្ធទៅនឹងការអភិរក្សលើធនធានធម្មជាតិ និងការចូលរួមរបស់ប្រជាជនដែលជាសមាជិកក្នុងសកម្មភាពអភិវឌ្ឍន៍សហគមន៍ទេសចរណ៍។<br>2. បង្កើនទំនាក់ទំនងល្អរវាងស្ថាប័នទេសចរណ៍ និងក្រុមហ៊ុនបដិសណ្ឋារកិច្ច ជាមួយនឹងវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជន សន្តហ្វ្រង់ស្វ័រ និងជាការបង្កើតកិច្ចសហប្រតិបត្តិការល្អជាមួយគ្នាទៅវិញទៅមក និងឱកាសការងារសម្រាប់សិស្សានុសិស្សដែលសិក្សាលើជំនាញបច្ចេកទេស។`, en: `On Monday, the 12th waxing moon of Āṣāṛha, Year of the Snake, Buddhist Era 2569, corresponding to July 07, 2025. A one-day field trip for Year 3, Batch 5 students of the Front Office Major from Saint Francois General Knowledge and Private Technical High School, including:<br>1. Chambok Eco-tourism Community.<br>2. Preah Suramarit Kosamak Kirirom National Park.<br>➡️ The objectives of the field trip are:<br>1. To enhance students' understanding of community management in the Chambok Eco-tourism Community, gaining new experiences related to natural resource conservation and the participation of community members in tourism development activities.<br>2. To foster good relationships between tourism institutions and hospitality companies with Saint Francois General Knowledge and Private Technical High School, establishing good cooperation and job opportunities for students studying technical skills.` }, 
-            // New Translations for Form
             registerHeading: { km: 'ទម្រង់ចុះឈ្មោះចូលរៀន', en: 'Enrollment Form' }, studentInfoLegend: { km: 'ព័ត៌មានសិស្ស', en: 'Student Information' }, nameKhmerLabel: { km: 'ឈ្មោះ (ខ្មែរ)៖', en: 'Name (Khmer):' }, nameEnglishLabel: { km: 'Name (អង់គ្លេស)៖', en: 'Name (English):' }, genderLabel: { km: 'ភេទ៖', en: 'Gender:' }, maleOption: { km: 'ប្រុស', en: 'Male' }, femaleOption: { km: 'ស្រី', en: 'Female' }, dobLabel: { km: 'ថ្ងៃ ខែ ឆ្នាំកំណើត៖', en: 'Date of Birth:' }, birthPlaceLabel: { km: 'ទីកន្លែងកំណើត ៖', en: 'Place of Birth:' }, currentAddressLabel: { km: 'ទីលំនៅបច្ចុប្បន្ន ៖', en: 'Current Address:' }, juniorHighLabel: { km: 'មកពីអនុវិទ្យាល័យ ៖', en: 'From Junior High School:' }, personalPhoneLabel: { km: 'លេខទូរស័ព្ទ (ផ្ទាល់ខ្លួន) ៖', en: 'Personal Phone Number:' }, parentInfoLegend: { km: 'ព័ត៌មានអាណាព្យាបាល', en: 'Guardian Information' }, fatherNameLabel: { km: 'ឈ្មោះឪពុក ៖', en: 'Father\'s Name:' }, motherNameLabel: { km: 'ឈ្មោះម្តាយ ៖', en: 'Mother\'s Name:' }, guardianPhoneLabel: { km: 'លេខទូរស័ព្ទ (អាណាព្យាបាល) ៖', en: 'Guardian\'s Phone Number:' }, submitButton: { km: 'បញ្ជូន', en: 'Submit' }
         };
 
