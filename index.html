@@ -210,7 +210,7 @@
     
     <div class="ticker-wrap">
         <div class="ticker-content">
-            សេចក្កីជូនដំណឹងដល់ប្អូនៗដែលទើបតែបានប្រឡងឌីប្លូមរួចរាល់សាលាចាប់ផ្ដើមទទួលពាក្យចុះឈ្មោះចូលរៀនចាប់ពីពេលចេញលទ្ធផលរួចរាល់
+            វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ !!  Saint Francois General Knowledge And Private Technical High School !!
         </div>
     </div>
 
@@ -231,8 +231,8 @@
     <div class="content-wrapper">
         <div class="container">
             <div id="home" class="page-content">
-                 <img src="images/welcome.png" alt="សូមស្វាគមន៍មកកាន់វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ" class="welcome-text-image">
-                <div class="slideshow-container">
+                <img src="images/welcome.png" alt="សូមស្វាគមន៍" class="welcome-text-image" data-lang="welcomeImage">
+                 <div class="slideshow-container">
                     <div class="slide fade"><img src="images/image1.2.png" alt="Welcome Image 1" onclick="openPopup(this.src)"></div>
                     <div class="slide fade"><img src="images/image1.3.png" alt="Welcome Image 2" onclick="openPopup(this.src)"></div>
                     <div class="slide fade"><img src="images/image1.4.png" alt="Welcome Image 3" onclick="openPopup(this.src)"></div>
@@ -524,6 +524,11 @@
 
         // Language Translation
         const translations = {
+            // Change 2: Add this new object for the welcome image
+            welcomeImage: {
+                km: { src: 'images/welcome.png', alt: 'សូមស្វាគមន៍មកកាន់វិទ្យាល័យ' },
+                en: { src: 'images/welcome Eng.png', alt: 'Welcome to the High School' }
+            },
             homeLink: { km: 'ទំព័រដើម', en: 'Home' }, 
             aboutLink: { km: 'អំពីសាលា', en: 'About Us' }, 
             majorsLink: { km: 'ជំនាញសិក្សា', en: 'Majors' }, 
@@ -553,7 +558,7 @@
             openMap: { km: 'មើលផែនទី', en: 'Open Map' }, 
             contactHeading: { km: 'ទំនាក់ទំនង', en: 'Contact Us' }, 
             emailText: { km: 'អ៊ីម៉ែល:', en: 'Email:' }, 
-            phoneText: { km: 'ទូរស័ព្ទ:', en: 'Phone:' }, 
+            phonenumber: { km: 'លេខទូរស័ព្ទ:', en: 'Phone number:' }, 
             photosHeading: { km: 'ទស្សនៈកិច្ចសិក្សា', en: 'Field Trips' }, 
             group1Title: { km: 'ដំណើរទស្សនកិច្ចសិក្សា ជំនាញកសិកម្ម(ក្សេត្រសាស្ត្រ) ឆ្នាំទី៣', en: 'Field Trip for Agriculture Major, Year 3' }, 
             group1Text: { km: `នៅថ្ងៃអង្គារ ៩រោច ខែពិសាខ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស. ២៥៦៩ ត្រូវនឹងថ្ងៃទី២០ ខែឧសភា ឆ្នាំ២០២៥។ ការចុះទស្សនកិច្ចសិក្សារបស់សិស្សឆ្នាំទី៣ ជាមួយលោកគ្រូ-អ្នកគ្រូ ដើម្បីស្វែងយល់អំពីមុខវិជ្ជាផ្សេងៗ ក៏ដូចជាចំណេះដឹងថី្មៗជាច្រើនបន្ថែមទៀតនៃវិទ្យាស្ថានបច្ចេកវិទ្យាកំពង់ស្ពឺ សម្រាប់ជួយបំភ្លឺផ្លូវរបស់ប្អូនៗនៅពេលអនាគត។ ២០.០៥.២០២៥ ➡️ (រៀនពិត អនុវត្តន៍ពិត បទពិសោធន៍ពិតៗ)`, en: `On Tuesday, the 9th waning moon of Visak, Year of the Snake, Buddhist Era 2569, corresponding to May 20, 2025. A field trip for Year 3 students with teachers to learn about various subjects and gain new knowledge from Kampong Speu Institute of Technology, to help guide their future. 20.05.2025 (True learning, true practice, true experience)` }, 
@@ -580,11 +585,23 @@
             submitButton: { km: 'បញ្ជូន', en: 'Submit' }
         };
 
+        // Change 3: UPDATED the setLanguage function
         window.setLanguage = function(lang) {
             document.querySelectorAll('[data-lang]').forEach(element => {
                 const key = element.getAttribute('data-lang');
                 if (translations[key] && translations[key][lang]) {
-                    element.innerHTML = translations[key][lang];
+                    
+                    // Special check for the welcome image
+                    if (key === 'welcomeImage') {
+                        const imageData = translations[key][lang];
+                        if (element.tagName === 'IMG') {
+                            element.src = imageData.src;
+                            element.alt = imageData.alt;
+                        }
+                    } else {
+                        // Original logic for all other text elements
+                        element.innerHTML = translations[key][lang];
+                    }
                 }
             });
             document.documentElement.lang = lang; 
