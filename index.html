@@ -61,7 +61,6 @@
             min-width: 0;
         }
         
-        /* New style for the single banner image */
         .school-banner-logo {
             height: 100px; /* Desktop height */
             width: auto;
@@ -76,6 +75,14 @@
             gap: 15px; /* Spacing between items */
             flex-shrink: 0;
         }
+        
+        /* Change 1: PC Flag layout */
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .menu-toggle { display: none; }
         .lang-switcher img {
             height: 20px;
@@ -85,7 +92,7 @@
             transition: transform 0.2s ease;
             cursor: pointer;
             display: block;
-            margin-right: auto;
+            /* margin-right: auto; Removed this line */
         }
 
         /* Ticker Bar Styles */
@@ -151,14 +158,17 @@
             /* Header */
             .main-header { padding: 8px 0; }
             .school-banner-logo { height: 40px; } /* Mobile height for banner */
-            .header-right { gap: 0; } 
-
-            /* Improve tap targets for mobile */
+            
+            /* Change 2: Phone Flag & Menu layout */
+            .header-right { 
+                gap: 5px; 
+                align-items: center; /* This ensures vertical alignment */
+            } 
             .lang-switcher {
                 display: inline-block;
-                padding: 5px;
+                padding: 0; /* Reset padding if any */
             }
-            .lang-switcher img { height: 15px; width: 27px; }
+            .lang-switcher img { height: 18px; width: 27px; }
             .menu-toggle { 
                 display: block; 
                 background: none; 
@@ -233,7 +243,7 @@
     <div class="content-wrapper">
         <div class="container">
             <div id="home" class="page-content">
-                <img src="images/welcome.png" alt="សូមស្វាគមន៍" class="welcome-text-image" data-lang="welcomeImage">
+                 <img src="images/welcome.png" alt="សូមស្វាគមន៍" class="welcome-text-image" data-lang="welcomeImage">
                  <div class="slideshow-container">
                     <div class="slide fade"><img src="images/image1.2.png" alt="Welcome Image 1" onclick="openPopup(this.src)"></div>
                     <div class="slide fade"><img src="images/image1.3.png" alt="Welcome Image 2" onclick="openPopup(this.src)"></div>
@@ -322,7 +332,7 @@
             <div id="location" class="page-content" style="display:none;">
                 <h2 data-lang="locationHeading">ទីតាំង</h2>
                 <p data-lang="locationText">ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ</p>
-                <a href="https://maps.app.goo.gl/Tp3r44DtYcgFQ4B79" target="_blank" class="map-link" data-lang="openMap">មើលផែនទី</a>
+                <a href="https://maps.app.goo.gl/d4KBUvoBrhWEQMko6" target="_blank" class="map-link" data-lang="openMap">មើលផែនទី</a>
             </div>
             <div id="contact" class="page-content" style="display:none;">
                 <h2 data-lang="contactHeading">ទំនាក់ទំនង</h2>
@@ -385,7 +395,7 @@
             <div class="social-icons">
                 <a href="https://web.facebook.com/profile.php?id=100057608164320" target="_blank"><img src="images/image-fb.png" alt="Facebook"></a>
                 <a href="https://www.tiktok.com/@saintfranciostechnical_0?is_from_webapp=1&sender_device=pc" target="_blank"><img src="images/tiktok.png.png" alt="TikTok"></a>
-                <a href="https://maps.app.goo.gl/Tp3r44DtYcgFQ4B79" target="_blank"><img src="images/image-google map.png" alt="Google Maps"></a>
+                <a href="https://maps.app.goo.gl/d4KBUvoBrhWEQMko6" target="_blank"><img src="images/image-google map.png" alt="Google Maps"></a>
             </div>
             <p data-lang="footerLocation">ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ​</p>
             <p data-lang="footerCopyright">© ២០២៥ Saint Francois General Knowledge And Private Technical High School រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
@@ -529,7 +539,7 @@
             // Change 2: Add this new object for the welcome image
             welcomeImage: {
                 km: { src: 'images/welcome.png', alt: 'សូមស្វាគមន៍មកកាន់វិទ្យាល័យ' },
-                en: { src: 'images/welcome Eng.png', alt: 'Welcome to the High School' }
+                en: { src: 'images/welcome Eng.png.png', alt: 'Welcome to the High School' }
             },
             homeLink: { km: 'ទំព័រដើម', en: 'Home' }, 
             aboutLink: { km: 'អំពីសាលា', en: 'About Us' }, 
