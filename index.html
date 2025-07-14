@@ -1,863 +1,625 @@
 <!DOCTYPE html>
 <html lang="km">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=800">
-    <title>វិក័យបត្រ NH Food</title>
-    <link href="https://fonts.googleapis.com/css2?family=Khmer+OS+Battambang&display=swap" rel="stylesheet">
+    <title>វិ.បច្ចេកទេស.ឯកជនសន្តហ្វ្រង់ស្វ័រ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ គឺជាគ្រឹះស្ថានអប់រំនៅខេត្តតាកែវ ផ្តល់ការបណ្តុះបណ្តាលជំនាញកសិកម្ម និងការិយាល័យជួរមុខ។">
+    <meta name="keywords" content="វិ.បច្ចេកទេស.ឯកជនសន្តហ្វ្រង់ស្វ័រ, សាលាបច្ចេកទេសសន្តហ្វ្រង់ស្វ័រ, សន្តហ្វ្រង់ស្វ័របច្ចេកទេស, Saint Francois Technical High School, Takeo Technical School, សាលាបច្ចេកទេសនៅតាកែវ, វិទ្យាល័យនៅត្រាំកក់">
+
+    <link rel="shortcut icon" href="images/image1.png.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Khmer+OS+Siemreap&family=Khmer+OS+Muol&display=swap" rel="stylesheet">
     <style>
-        /* CSS Codes (ការតុបតែង) */
+        /* Universal Box Sizing for easier layout management */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* General Body and Container */
         body {
-            font-family: 'Khmer OS Battambang', sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            margin: 20px 0;
-        }
-
-        .invoice-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 800px;
-            box-sizing: border-box; /* Ensures padding doesn't add to overall width */
-        }
-
-        h1, h2 {
-            text-align: center;
+            font-family: 'Khmer OS Siemreap', sans-serif;
+            line-height: 1.6;
             color: #333;
-        }
-
-        /* Header for input page */
-        .input-page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-        }
-
-        .input-page-header .company-info {
-            display: flex;
-            align-items: center;
-            text-align: left;
-        }
-
-        .input-page-header .company-info img {
-            max-width: 80px;
-            height: auto;
-            margin-right: 15px;
-            border-radius: 50%;
-        }
-
-        .input-page-header .company-details h1 {
+            background-color: #f4f7f6;
             margin: 0;
-            font-size: 1.8em;
-            text-align: left;
-        }
-
-        .input-page-header .company-details p {
-            margin: 0;
-            font-size: 0.9em;
-            color: #555;
-            text-align: left;
-        }
-
-        .input-page-header .contact-info {
-            text-align: right;
-        }
-
-        .input-page-header .contact-info p {
-            margin: 5px 0;
-            font-size: 0.9em;
-        }
-
-
-        .customer-info-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .customer-info-form label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .customer-info-form input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .item-entry {
-            display: grid;
-            grid-template-columns: 1fr 0.5fr 0.8fr 0.5fr;
-            gap: 15px;
-            margin-bottom: 20px;
-            align-items: flex-end;
-        }
-
-        .item-entry label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .item-entry input[type="text"],
-        .item-entry input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .item-entry button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .item-entry button:hover {
-            background-color: #218838;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #eee;
-            margin: 30px 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table th, table td {
-            border: 1px solid #eee; /* Light border for input table */
-            padding: 12px;
-            text-align: left;
-        }
-
-        table th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-
-        table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        table tfoot td {
-            font-size: 1.2em;
-            font-weight: bold;
-            background-color: #e6f7ff;
-        }
-
-        #totalAmount {
-            text-align: right;
-            color: #007bff;
-        }
-
-        /* New button style */
-        .generate-invoice-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .generate-invoice-btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Styles for the invoice print page */
-        /* These styles will be applied to the new window for printing */
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                background-color: #fff; /* Ensure white background for print */
-                -webkit-print-color-adjust: exact; /* For printing background colors */
-            }
-            .invoice-page {
-                width: 100%;
-                margin: 0;
-                padding: 20px; /* Some padding for print page */
-                border: none; /* No border for print */
-                box-shadow: none; /* No shadow for print */
-            }
-            /* Hide elements not needed for print */
-            .invoice-container { display: none; }
-        }
-
-        .invoice-page {
-            width: 100%;
-            max-width: 800px; /* This will be set on the new window */
-            background-color: #fff;
-            padding: 30px;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        .logo-info {
-            display: flex;
-            flex-direction: column; /* Changed to column to stack logo and customer info */
-            align-items: flex-start; /* Align items to the start */
-        }
-        .logo-info img {
-            max-width: 150px; /* Increased logo size */
-            height: auto;
-            margin-bottom: 10px; /* Space between logo and customer info */
-            border-radius: 50%;
-        }
-        .company-details {
-            text-align: left;
-        }
-        .company-details h1 {
-            margin: 0;
-            color: #333;
-            font-size: 2.2em;
-            text-align: left;
-        }
-        .company-details p {
-            margin: 0;
-            font-size: 1.1em;
-            color: #555;
-            text-align: left;
-        }
-        .invoice-details-right {
-            text-align: right;
-            padding-top: 50px; /* Aligns with customer info */
-        }
-        .invoice-details-right p {
-            margin: 5px 0;
-            font-size: 1.1em;
-        }
-        .invoice-title {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-decoration: underline;
-        }
-        .customer-invoice-info {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            text-align: left;
-            display: block;
-        }
-        .customer-invoice-info p {
-            margin: 5px 0;
-            font-size: 1.1em;
-        }
-        /* Table for print page */
-        .invoice-page table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .invoice-page table th, .invoice-page table td {
-            border: 1px solid #000; /* Darker border for print table */
-            padding: 10px;
-            text-align: left;
-        }
-        .invoice-page table th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-            text-align: center;
-        }
-        .invoice-page table td:nth-child(2),
-        .invoice-page table td:nth-child(3),
-        .invoice-page table td:nth-child(4),
-        .invoice-page table td:nth-child(5) {
-            text-align: center;
-        }
-        .invoice-page table tfoot td {
-            font-size: 1.1em;
-            font-weight: bold;
-            background-color: #e6f7ff;
-        }
-        .invoice-page table tfoot td:last-child {
-            text-align: center;
-        }
-        .payment-info {
+            padding: 0;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-wrapper {
+            flex-grow: 1;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background-color: #0D47A1;
+            color: white;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin-top: 30px;
-            text-align: center;
-        }
-        .qr-codes {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 10px;
-        }
-        .qr-codes img {
-            max-width: 150px; /* Increased QR code size */
-            height: auto;
-        }
-        .aba-info {
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-        }
-        .signatures {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .signature-box {
-            width: 45%;
-            text-align: center;
-        }
-        .signature-line {
-            border-top: 1px solid #000;
-            margin-top: 50px;
-            display: inline-block;
-            width: 100%;
-        }
-        .thank-you {
-            text-align: center;
-            margin-top: 30px;
-            font-style: italic;
-            color: #555;
-            font-size: 1.2em;
         }
 
-        /* Currency selection */
-        .currency-select-container {
-            text-align: right;
-            margin-bottom: 10px;
+        .header-left {
+            display: flex;
+            align-items: center;
+            overflow: hidden; /* Prevent overflow */
+            flex: 1;
+            min-width: 0;
         }
-        .currency-select-container select {
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+        
+        .school-banner-logo {
+            height: 100px; /* Desktop height */
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            justify-content: flex-start;
         }
 
-        /* Responsive adjustments */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Spacing between items */
+            flex-shrink: 0;
+        }
+        
+        /* Change 1: PC Flag layout */
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-toggle { display: none; }
+        .lang-switcher img {
+            height: 20px;
+            width: 30px;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 3px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            display: block;
+            /* margin-right: auto; Removed this line */
+        }
+
+        /* Ticker Bar Styles */
+        .ticker-wrap { width: 100%; background-color: #FFC107; padding: 8px 0; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .ticker-content { display: inline-block; white-space: nowrap; color: #0D47A1; font-weight: bold; font-size: 1em; padding-left: 100%; animation: ticker-scroll 30s linear infinite; }
+        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* Navigation Menu Styles */
+        .main-menu { background-color: #1976D2; box-shadow: 0 2px 5px rgba(0,0,0,0.2); margin-bottom: 20px; position: sticky; top: 0; z-index: 1000; }
+        .main-menu ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; }
+        .main-menu ul li a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-size: 1.1em; font-weight: bold; transition: background-color 0.3s ease; white-space: nowrap; }
+        .main-menu ul li a:hover, .main-menu ul li a.active { background-color: #0D47A1; }
+
+        /* Page Content Area */
+        .page-content { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 900px; margin: 20px auto; }
+        .welcome-text-image { display: block; max-width: 100%; height: auto; margin: 0 auto 25px auto; }
+        .page-content h2 { font-family: 'Khmer OS Muol Light', sans-serif; color: #0D47A1; text-align: center; margin-bottom: 20px; }
+        
+        /* Registration Form & Success Message */
+        .register-form-group { border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .register-form-group legend { font-family: 'Khmer OS Muol Light', sans-serif; color: #0D47A1; font-weight: bold; padding: 0 10px; }
+        #register form label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: bold; color: #333; }
+        #register form input, #register form select, #register form textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Khmer OS Siemreap', sans-serif; font-size: 1em;}
+        .submit-button-container { text-align: center; margin-top: 20px; }
+        .submit-button { background: linear-gradient(45deg, #28a745, #218838); color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1em; font-weight: bold; font-family: 'Khmer OS Siemreap', sans-serif; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; }
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
+        #form-success-message { display: none; text-align: center; padding: 40px 20px; }
+        #form-success-message img { max-width: 100%; height: auto; }
+        
+        /* Other generic styles */
+        .indented-p { text-indent: 2em; margin-bottom: 15px; text-align: justify; }
+        .slideshow-container { position: relative; width: 100%; max-width: 860px; margin: auto; overflow: hidden; border-radius: 8px; }
+        .slide { display: none; width: 100%; }
+        .slide img { width: 100%; height: auto; vertical-align: middle; }
+        .fade { animation: fade 1.5s; }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
+        .image-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .image-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s ease; }
+        .image-gallery img:hover { transform: scale(1.05); }
+        .accordion-title { font-family: 'Khmer OS Muol Light', sans-serif; color: #1976D2; background-color: #eef5ff; padding: 15px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; margin-top: 15px; position: relative; padding-right: 40px; }
+        .accordion-title::after { content: '+'; font-family: monospace; font-size: 24px; font-weight: bold; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); transition: transform 0.3s; }
+        .accordion-title.active::after { content: '−'; }
+        .accordion-title:hover { background-color: #dbe9fa; }
+        .accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, padding 0.5s ease-out; border: 1px solid #ddd; border-top: none; border-radius: 0 0 5px 5px; background-color: #fafcff; }
+        .accordion-content-inner { padding: 20px 0; }
+        .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .popup-content { position: relative; max-width: 800px; width: 90%; max-height: 85vh; }
+        .popup-content img { width: 100%; height: auto; display: block; border-radius: 8px; }
+        .popup-close { position: absolute; top: -15px; right: -15px; color: white; background-color: rgba(0,0,0,0.5); border-radius: 50%; width: 35px; height: 35px; font-size: 24px; line-height: 35px; text-align: center; font-weight: bold; cursor: pointer; user-select: none; }
+        
+        /* Footer Styles */
+        .main-footer { background-color: #0D47A1; color: white; padding: 25px 0; text-align: center; }
+        .social-icons { margin-bottom: 15px; }
+        .social-icons a { display: inline-block; margin: 0 10px; }
+        .social-icons a img { height: 40px; width: 40px; border-radius: 50%; background-color: white; padding: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s ease; }
+        .social-icons a img:hover { transform: scale(1.1); }
+        .main-footer p { margin: 5px 20px; font-size: 0.9em; line-height: 1.5; }
+
+        /* === RESPONSIVE STYLES (For Phone) === */
         @media (max-width: 768px) {
-            .invoice-container {
-                padding: 15px;
+            .container { padding: 0 10px; }
+
+            /* Header */
+            .main-header { padding: 8px 0; }
+            .school-banner-logo { height: 40px; } /* Mobile height for banner */
+            
+            /* Change 2: Phone Flag & Menu layout */
+            .header-right { 
+                gap: 5px; 
+                align-items: center; /* This ensures vertical alignment */
+            } 
+            .lang-switcher {
+                display: inline-block;
+                padding: 0; /* Reset padding if any */
             }
-            .customer-info-form, .item-entry {
-                grid-template-columns: 1fr; /* Stack inputs on small screens */
+            .lang-switcher img { height: 18px; width: 27px; }
+            .menu-toggle { 
+                display: block; 
+                background: none; 
+                border: none; 
+                color: white; 
+                font-size: 28px; 
+                cursor: pointer; 
+                padding: 8px;
             }
-            .input-page-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .input-page-header .company-info,
-            .input-page-header .company-details,
-            .input-page-header .contact-info {
-                text-align: center;
-                align-items: center;
-                margin-right: 0;
-            }
-            .input-page-header .company-info img {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            .invoice-page .header-section {
-                flex-direction: column;
-                align-items: center;
-            }
-            .invoice-page .logo-info {
-                align-items: center;
-            }
-            .invoice-page .company-details,
-            .invoice-page .invoice-details-right {
-                text-align: center;
-                padding-top: 10px; /* Adjust spacing */
-            }
-            .invoice-page .qr-codes {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .invoice-page .qr-codes img {
-                max-width: 100px; /* Adjust QR code size for mobile */
-            }
-            .signatures {
-                flex-direction: column;
-                align-items: center;
-            }
-            .signature-box {
-                width: 80%;
-                margin-bottom: 20px;
-            }
-            .signature-line {
-                margin-top: 20px;
-            }
+            
+            /* Ticker */
+            .ticker-wrap { padding: 5px 0; }
+            .ticker-content { font-size: 0.8em; }
+            
+            /* Hamburger Menu Dropdown */
+            .main-menu { position: relative; }
+            .main-menu ul { display: none; flex-direction: column; width: 100%; background-color: #1976D2; position: absolute; left: 0; top: 100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+            .main-menu.menu-open ul { display: flex; }
+            .main-menu ul li a { padding: 12px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+            .main-menu ul li:first-child a { border-top: none; }
+
+            /* Content */
+            .page-content { padding: 15px; }
+
+            /* Footer */
+            .main-footer { padding: 15px 0; }
+            .social-icons { margin-bottom: 10px; }
+            .social-icons a img { height: 25px; width: auto; padding: 4px; }
+            .main-footer p { font-size: 0.8em; margin: 4px 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="invoice-container">
-        <div class="input-page-header">
-            <div class="company-info">
-                <img src="images/Logo.png" alt="Company Logo">
-                <div class="company-details">
+
+    <div class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="images/logo.png" alt="School Banner Logo" class="school-banner-logo">
+                </div>
+                <div class="header-right">
+                    <div class="lang-container">
+                        <a class="lang-switcher" onclick="setLanguage('en')"><img src="images/image English.png" alt="English"></a>
+                        <a class="lang-switcher" onclick="setLanguage('km')"><img src="images/image khmer flag.png" alt="Khmer"></a>
+                    </div>
+                    <button class="menu-toggle" aria-label="Open menu">☰</button>
                 </div>
             </div>
         </div>
-        <h1>វិក័យបត្រ</h1> 
-
-        <div class="currency-select-container">
-            <label for="currencySelect">ជ្រើសរើសរូបិយប័ណ្ណ:</label>
-            <select id="currencySelect" onchange="updateCurrencySymbol()">
-                <option value="USD">ដុល្លារ ($)</option>
-                <option value="KHR">រៀល (៛)</option>
-            </select>
+    </div>
+    
+    <div class="ticker-wrap">
+        <div class="ticker-content">
+            វិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជនសន្តហ្វ្រង់ស្វ័រ !!  Saint Francois General Knowledge And Private Technical High School !!
         </div>
+    </div>
 
-        <h2>ព័ត៌មានអតិថិជន</h2> 
-        <div class="customer-info-form">
-            <div>
-                <label for="customerName">ឈ្មោះអតិថិជន:</label> 
-                <input type="text" id="customerName" placeholder="បញ្ចូលឈ្មោះអតិថិជន">
+    <nav class="main-menu">
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="active" data-lang="homeLink">ទំព័រដើម</a></li>
+                <li><a href="#about" data-lang="aboutLink">អំពីសាលា</a></li>
+                <li><a href="#skills" data-lang="majorsLink">ជំនាញសិក្សា</a></li>
+                <li><a href="#study-tour" data-lang="photosLink">ទស្សនៈកិច្ចសិក្សា</a></li>
+                <li><a href="#location" data-lang="locationLink">ទីតាំង</a></li>
+                <li><a href="#contact" data-lang="contactLink">ទំនាក់ទំនង</a></li>
+                <li><a href="#register" style="background:#06037b;" data-lang="registerLink">ចុះឈ្មោះចូលរៀន</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="content-wrapper">
+        <div class="container">
+            <div id="home" class="page-content">
+                 <img src="images/welcome.png" alt="សូមស្វាគមន៍" class="welcome-text-image" data-lang="welcomeImage">
+                 <div class="slideshow-container">
+                    <div class="slide fade"><img src="images/image1.2.png" alt="Welcome Image 1" onclick="openPopup(this.src)"></div>
+                    <div class="slide fade"><img src="images/image1.3.png" alt="Welcome Image 2" onclick="openPopup(this.src)"></div>
+                    <div class="slide fade"><img src="images/image1.4.png" alt="Welcome Image 3" onclick="openPopup(this.src)"></div>
+                </div>
             </div>
-            <div>
-                <label for="customerAddress">អាសយដ្ឋាន:</label> 
-                <input type="text" id="customerAddress" placeholder="បញ្ចូលអាសយដ្ឋាន">
+            
+            <div id="about" class="page-content" style="display:none;">
+                 <h2 data-lang="aboutHeading">ប្រវត្តិសាលា</h2>
+                <p class="indented-p" data-lang="aboutText">ក្នុងឆ្នាំ ២០០៣ ព្រះសហគមន៍កាតូលិកចំការទៀង ដែលមានលោកអភិបាល អូលីវីយេ ក្នុងនាមជាអ្នកទទួលខុសត្រូវ ហើយលោកជាប្រធានគណៈកម្មការអប់រំសិក្សាធិការព្រះសហគមន៍កាតូលិកភូមិភាគភ្នំពេញ។ ដោយសង្កេតឃើញភាពក្រីក្រលំបាក សិស្សបោះបង់ការសិក្សាច្រើន ដោយសារពុំមានលទ្ធភាពបន្តការសិក្សានៅភ្នំពេញ លោកអភិបាលមានគំនិតបង្កើតវិទ្យាល័យបច្ចេកទេស។ ប៉ុន្តែពេលនោះ ពុំមានមធ្យោបាយអាចដំណើរការទៅបាន។ លោកអភិបាលក៏សម្រេចចិត្តបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ សន្តហ្វ្រង់ស្វ័រ ដោយបន្ថែមកម្មវិធីសិក្សាជំនាញមួយចំនួនដូចជា កសិកម្ម លេខាធិការ និងតម្បាញសូត្រ។ ចាប់តាំងពីឆ្នាំ ២០០៣ រហូតដល់ឆ្នាំ ២០១៥ លោកអភិបាលបន្តចិញ្ចឹមចិត្តបង្កើតសាលាបច្ចេកទេស ក្នុងគោលបំណងឱ្យសិស្សក្រីក្រ និង សិស្សពុំមានសមត្ថភាពរៀនផ្នែកចំណេះទូទៅទទួលបានឱកាសសិក្សាផ្នែកអប់រំបច្ចេកទេសដើម្បីឱ្យពួកគេទទួលបាន ជំនាញយ៉ាងពិតប្រាកដដើម្បីឱ្យពួកគេមានលទ្ធភាព សមត្ថភាពកសាងជីវភាពរស់នៅ និងកាត់បន្ថយភាពក្រីក្រនៅតាមជនបទ។ ក្នុងឆ្នាំ២០១៥ ក្រសួងអប់រំយុវជន និងកីឡា បានធ្វើកំណែទម្រង់ដោយផ្តោតសំខាន់លើការបណ្តុះបណ្តាលផ្នែកអប់រំបច្ចេកទេស។ ដោយមើលឃើញឱកាសដ៏ល្អនេះ លោកអភិបាលអូលីវីយ៉េបានចាប់ផ្តើមបង្កើតគណៈកម្មការមួយដើម្បីធ្វើការសម្របសម្រួលសុំបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស្វ័រនេះឡើង ហើយបានសម្រេចជាស្ថាពរក្នុងឆ្នាំ ២០១៥ តាមសារាចរណ៍លេខ ២៥១៩ អយកប្រក ចុះថ្ងៃទី ០២ ខែកញ្ញា ឆ្នាំ ២០១៥ ។</p>
+                <div class="image-gallery">
+                    <img src="images/image1.2.png" alt="School History Image 1" onclick="openPopup(this.src)"><img src="images/image1.3.png" alt="School History Image 2" onclick="openPopup(this.src)"><img src="images/image1.5.png" alt="School History Image 3" onclick="openPopup(this.src)"><img src="images/image1.6.png" alt="School History Image 4" onclick="openPopup(this.src)">
+                </div>
             </div>
-            <div>
-                <label for="customerPhone">ទូរស័ព្ទលេខ:</label> 
-                <input type="text" id="customerPhone" placeholder="បញ្ចូលលេខទូរស័ព្ទ">
+            <div id="skills" class="page-content" style="display:none;">
+                <h2 data-lang="majorsHeading">ជំនាញសិក្សា</h2>
+                <div class="accordion-item">
+                    <h3 class="accordion-title" data-lang="agricultureMajor">ក្សេត្រសាស្ត្រ</h3>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <strong data-lang="agricultureCurriculum">កម្មវិធីសិក្សា:</strong>
+                            <p class="indented-p" data-lang="agricultureCurriculumContent">ការសិក្សាគ្រប់ជ្រុងជ្រោយអំពីការអនុវត្តកសិកម្ម ការដាំដុះដំណាំ ការចិញ្ចឹមសត្វ និងបច្ចេកទេសធ្វើកសិកម្មប្រកបដោយនិរន្តរភាព។</p>
+                            <strong data-lang="agricultureMidterm">មុខវិជ្ជាប្រឡងឆមាស:</strong>
+                            <p class="indented-p" data-lang="agricultureMidtermContent">ការប្រឡងគ្របដណ្តប់លើវិទ្យាសាស្ត្រដំណាំ ការគ្រប់គ្រងដី និងការចិញ្ចឹមសត្វជាមូលដ្ឋាន។</p>
+                            <strong data-lang="agricultureFinal">មុខវិជ្ជាប្រឡងបញ្ចប់:</strong>
+                            <p class="indented-p" data-lang="agricultureFinalText">សិស្សត្រូវប្រឡងជំនាញជាក់លាក់ និងសរសេរកិច្ចការស្រាវជ្រាវ។</p>
+                            <div class="image-gallery">
+                                <img src="images/A001.png" alt="Agriculture Image 1" onclick="openPopup(this.src)"><img src="images/A002.png" alt="Agriculture Image 2" onclick="openPopup(this.src)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-title" data-lang="officeMajor">ការិយាល័យជួរមុខ</h3>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <strong data-lang="officeCurriculum">កម្មវិធីសិក្សា:</strong>
+                            <p class="indented-p" data-lang="officeCurriculumContent">សិក្សាអំពីនីតិវិធីរដ្ឋបាល សេវាកម្មអតិថិជន ជំនាញទំនាក់ទំនង និងការគ្រប់គ្រងការិយាល័យ។</p>
+                            <strong data-lang="officeMidterm">មុខវិជ្ជាប្រឡងឆមាស:</strong>
+                            <p class="indented-p" data-lang="officeMidtermContent">ការប្រឡងរួមមាន រដ្ឋបាលការិយាល័យ ទំនាក់ទំនងអាជីវកម្ម និងកម្មវិធីកុំព្យូទ័រ។</p>
+                            <strong data-lang="officeFinal">មុខវិជ្ជាប្រឡងបញ្ចប់:</strong>
+                            <p class="indented-p" data-lang="officeFinalText">សិស្សត្រូវប្រឡងជំនាញជាក់លាក់ និងសរសេរកិច្ចការស្រាវជ្រាវ។</p>
+                            <div class="image-gallery">
+                                <img src="images/image8.png" alt="Front Office Image 1" onclick="openPopup(this.src)"><img src="images/image9.png" alt="Front Office Image 2" onclick="openPopup(this.src)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="study-tour" class="page-content" style="display:none;">
+                <h2 data-lang="photosHeading">ទស្សនៈកិច្ចសិក្សា</h2>
+                 <div class="accordion-item">
+                    <h3 class="accordion-title" data-lang="group1Title">ដំណើរទស្សនកិច្ចសិក្សា ជំនាញកសិកម្ម(ក្សេត្រសាស្ត្រ) ឆ្នាំទី៣</h3>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p class="indented-p" data-lang="group1Text">នៅថ្ងៃអង្គារ ៩រោច ខែពិសាខ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស. ២៥៦៩ ត្រូវនឹងថ្ងៃទី២០ ខែឧសភា ឆ្នាំ២០២៥។ ការចុះទស្សនកិច្ចសិក្សារបស់សិស្សឆ្នាំទី៣ ជាមួយលោកគ្រូ-អ្នកគ្រូ ដើម្បីស្វែងយល់អំពីមុខវិជ្ជាផ្សេងៗ ក៏ដូចជាចំណេះដឹងថី្មៗជាច្រើនបន្ថែមទៀតនៃវិទ្យាស្ថានបច្ចេកវិទ្យាកំពង់ស្ពឺ សម្រាប់ជួយបំភ្លឺផ្លូវរបស់ប្អូនៗនៅពេលអនាគត។ ២០.០៥.២០២៥ ➡️ (រៀនពិត អនុវត្តន៍ពិត បទពិសោធន៍ពិតៗ)</p>
+                            <div class="image-gallery">
+                                <img src="images/A001.png" alt="Study Tour Sub Image 1" onclick="openPopup(this.src)"><img src="images/A002.png" alt="Study Tour Sub Image 2" onclick="openPopup(this.src)"><img src="images/A003.png" alt="Study Tour Sub Image 3" onclick="openPopup(this.src)"><img src="images/A005.png" alt="Study Tour Sub Image 4" onclick="openPopup(this.src)"><img src="images/A006.png" alt="Study Tour Sub Image 5" onclick="openPopup(this.src)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-title" data-lang="group2Title">ដំណើរទស្សនកិច្ចសិក្សា ជំនាញការិយាល័យជួរមុខ ឆ្នាំទី២ ជំនាន់ទី៦</h3>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p class="indented-p" data-lang="group2Text">នាថ្ងៃសុក្រ ១១កើត ខែជេស្ឋ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស.២៥៦៩ ត្រូវនឹងថ្ងៃទី០៦ ខែមិថុនា ឆ្នាំ២០២៥ ដំណើរទស្សនកិច្ចសិក្សារយៈពេល១ថ្ងៃ របស់សិស្សានុសិស្សជំនាញការិយាល័យជួរមុខ ឆ្នាំទី២ ជំនាន់ទី៦ នៃវិទ្យាល័យចំណេះទូទៅនិងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស័្វររួមមាន៖<br>1. ក្រុមហ៊ុន Thalias Hospitality ទស្សនៈកិច្ចសិក្សាទៅកាន់ភោជនីយដ្ឋាន Topaz ទាំងពីរទីតាំង<br>2. Topaz (ផ្លូវនរោត្តម)ស្ថិតនៅលើផ្លូវលេខ ១៦២ ផ្លូវនរោត្តម (Preah Norodom Blvd), ភ្នំពេញ<br>3. Topaz (The Commune – ទួលគោក) ស្ថិតនៅជាន់ទី១ ក្នុងអាគារ The Commune, ផ្លូវលេខ ៣៤៧, សង្កាត់ទួលគោក, ភ្នំពេញ<br>4. ក្រុមហ៊ុន Almond Hospitality ទស្សនៈកិច្ចសិក្សានៅក្នុង Yi Sang The Garden ស្ថិតលើផ្លូវលេខ 337, សង្កាត់បឹងកុក 1, ខ័ណ្ឌទួលគោក, ភ្នំពេញ<br> ➡️ គោលបំណងនៃដំណើរទស្សនកិច្ចសិក្សាមានដូចជា៖<br>1. បង្កើនការយល់ដឹងបន្ថែមដល់សិស្សានុសិស្សលើដំណើរការប្រតិបត្តិការ ផ្នែការិយាល័យជួរមុខ ផ្នែកគេហកិច្ច និងផ្នែកសេវាកម្មអាហារ និងភេសជ្ជៈ ដើម្បីជារូបភាពក្នុងការពង្រឹងនូវពុទ្ធិបន្ថែមផ្សារភ្ជាប់ការសិក្សាទ្រឹស្តី និងការអនុវត្តផ្ទាល់។<br>2. បង្កើនទំនាក់ទំនងល្អរវាងស្ថាប័នទេសចរណ៍ និងក្រុមហ៊ុនបដិសណ្ឋារកិច្ច ជាមួយនឹងវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជន សន្តហ្វ្រង់ស្វ័រ និងជាការបង្កើតកិច្ចសហប្រតិបត្តិការល្អជាមួយគ្នាទៅវិញទៅមក និងឱកាសការងារសម្រាប់សិស្សានុសិស្សដែលសិក្សាលើជំនាញបច្ចេកទេស។</p>
+                            <div class="image-gallery">
+                                <img src="images/image8.png" alt="Office Trip 1" onclick="openPopup(this.src)"><img src="images/image9.png" alt="Office Trip 2" onclick="openPopup(this.src)"><img src="images/image10.png" alt="Office Trip 3" onclick="openPopup(this.src)"><img src="images/007.png" alt="Office Trip 4" onclick="openPopup(this.src)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-title" data-lang="group3Title">ដំណើរទស្សនកិច្ចសិក្សា ជំនាញការិយាល័យជួរមុខ ឆ្នាំទី៣ ជំនាន់ទី៥</h3>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p class="indented-p" data-lang="group3Text">នាថ្ងៃចន្ទ ១២កើត ខែអាសាឍ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស.២៥៦៩ ត្រូវនឹងថ្ងៃទី០៧ ខែកក្កដា ឆ្នាំ២០២៥ ដំណើរទស្សនកិច្ចសិក្សារយៈពេល១ថ្ងៃ របស់សិស្សានុសិស្សជំនាញការិយាល័យជួរមុខ ឆ្នាំទី៣ ជំនាន់ទី៥ នៃវិទ្យាល័យចំណេះទូទៅនិងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស័្វររួមមាន៖<br>1. សហគមន៍អេកូទេសចរណ៍ចំបក់<br>2. ឧទ្យានជាតិ ព្រះសុរាម្រិតកុសមៈ គិរីរម្យ<br>➡️ គោលបំណងនៃដំណើរទស្សនកិច្ចសិក្សាមានដូចជា៖<br>1. បង្កើនការយល់ដឹងបន្ថែមដល់សិស្សានុសិស្សស្វែងយល់ពីការគ្រប់គ្រងក្នុងសហគមន៍អេកូទេសចរណ៍ចំបក់ដើម្បីទទួលបានបទពិសោធន៍ថ្មីៗពាក់ព័ន្ធទៅនឹងការអភិរក្សលើធនធានធម្មជាតិ និងការចូលរួមរបស់ប្រជាជនដែលជាសមាជិកក្នុងសកម្មភាពអភិវឌ្ឍន៍សហគមន៍ទេសចរណ៍។<br>2. បង្កើនទំនាក់ទំនងល្អរវាងស្ថាប័នទេសចរណ៍ និងក្រុមហ៊ុនបដិសណ្ឋារកិច្ច ជាមួយនឹងវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជន សន្តហ្វ្រង់ស្វ័រ និងជាការបង្កើតកិច្ចសហប្រតិបត្តិការល្អជាមួយគ្នាទៅវិញទៅមក និងឱកាសការងារសម្រាប់សិស្សានុសិស្សដែលសិក្សាលើជំនាញបច្ចេកទេស។</p>
+                            <div class="image-gallery">
+                                <img src="images/images001.png" alt="Office Trip 5-1" onclick="openPopup(this.src)"><img src="images/002.png" alt="Office Trip 5-2" onclick="openPopup(this.src)"><img src="images/003.png" alt="Office Trip 5-3" onclick="openPopup(this.src)"><img src="images/004.png" alt="Office Trip 5-4" onclick="openPopup(this.src)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="location" class="page-content" style="display:none;">
+                <h2 data-lang="locationHeading">ទីតាំង</h2>
+                <p data-lang="locationText">ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ</p>
+                <a href="https://maps.app.goo.gl/d4KBUvoBrhWEQMko6" target="_blank" class="map-link" data-lang="openMap">មើលផែនទី</a>
+            </div>
+            <div id="contact" class="page-content" style="display:none;">
+                <h2 data-lang="contactHeading">ទំនាក់ទំនង</h2>
+                <div class="contact-info">
+                    <p><strong data-lang="emailText">អ៊ីម៉ែល:</strong> saintfrancois.enquiry@gmail.com</p>
+                    <p><strong data-lang="phonenumber">លេខទូរស័ព្ទ:</strong> 067 563 110</p>
+                </div>
+            </div>
+            
+            <div id="register" class="page-content" style="display:none;">
+                <div id="registration-form-container">
+                    <h2 data-lang="registerHeading">ទម្រង់ចុះឈ្មោះចូលរៀន</h2>
+                    <form id="sfs-form" action="https://formspree.io/f/xkgbdvnz" method="POST">
+                        <fieldset class="register-form-group">
+                            <legend data-lang="studentInfoLegend">ព័ត៌មានសិស្ស</legend>
+                            <label for="khmer-name" data-lang="nameKhmerLabel">ឈ្មោះ (អក្សរខ្មែរ) ៖</label>
+                            <input type="text" id="khmer-name" name="ឈ្មោះខ្មែរ" placeholder="ឈ្មោះពេញជាភាសាខ្មែរ" required>
+                            <label for="english-name" data-lang="nameEnglishLabel">Name (អក្សរឡាតាំង) ៖</label>
+                            <input type="text" id="english-name" name="ឈ្មោះឡាតាំង" placeholder="Full Name in Latin" required>
+                            <label for="dob" data-lang="dobLabel">ថ្ងៃ ខែ ឆ្នាំកំណើត ៖</label>
+                            <input type="date" id="dob" name="ថ្ងៃខែឆ្នាំកំណើត" required>
+                            <label for="gender" data-lang="genderLabel">ភេទ ៖</label>
+                            <select id="gender" name="ភេទ" required>
+                                <option value="">ជ្រើសរើស</option>
+                                <option value="male" data-lang="maleOption">ប្រុស</option>
+                                <option value="female" data-lang="femaleOption">ស្រី</option>
+                            </select>
+                            <label for="birth-place" data-lang="birthPlaceLabel">ទីកន្លែងកំណើត ៖</label>
+                            <textarea id="birth-place" name="ទីកន្លែងកំណើត" rows="3" placeholder="សរសេរស្រុក ខេត្តដែលអ្នកបានកើត" required></textarea>
+                            <label for="current-address" data-lang="currentAddressLabel">ទីលំនៅបច្ចុប្បន្ន ៖</label>
+                            <textarea id="current-address" name="ទីលំនៅបច្ចុប្បន្ន" rows="3" placeholder="សរសេរភូមិ ឃុំ ស្រុក ខេត្ត" required></textarea>
+                            <label for="junior-high" data-lang="juniorHighLabel">មកពីអនុវិទ្យាល័យ ៖</label>
+                            <input type="text" id="junior-high" name="មកពីអនុវិទ្យាល័យ" placeholder="ឈ្មោះអនុវិទ្យាល័យដែលអ្នកបានបញ្ចប់" required>
+                            <label for="personal-phone" data-lang="personalPhoneLabel">លេខទូរស័ព្ទ (ផ្ទាល់ខ្លួន) ៖</label>
+                            <input type="tel" id="personal-phone" name="លេខទូរស័ព្ទផ្ទាល់ខ្លួន" placeholder="ឧ. 012 345 678" required>
+                        </fieldset>
+                        <fieldset class="register-form-group">
+                            <legend data-lang="parentInfoLegend">ព័ត៌មានអាណាព្យាបាល</legend>
+                            <label for="father-name" data-lang="fatherNameLabel">ឈ្មោះឪពុក ៖</label>
+                            <input type="text" id="father-name" name="ឈ្មោះឪពុក" placeholder="ឈ្មោះពេញ" required>
+                            <label for="mother-name" data-lang="motherNameLabel">ឈ្មោះម្តាយ ៖</label>
+                            <input type="text" id="mother-name" name="ឈ្មោះម្តាយ" placeholder="ឈ្មោះពេញ" required>
+                            <label for="guardian-phone" data-lang="guardianPhoneLabel">លេខទូរស័ព្ទ (អាណាព្យាបាល) ៖</label>
+                            <input type="tel" id="guardian-phone" name="លេខទូរស័ព្ទអាណាព្យាបាល" placeholder="ឧ. 012 345 678" required>
+                        </fieldset>
+                        <div class="submit-button-container">
+                            <button type="submit" class="submit-button" data-lang="submitButton">បញ្ជូន</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="form-success-message">
+                    <img src="images/thankyou.png.png" alt="Thank You">
+                </div>
             </div>
         </div>
-        <hr>
-
-        <h2>បញ្ចូលទំនិញ</h2>
-        <form id="invoiceForm">
-            <div class="item-entry">
-                <div>
-                    <label for="itemName">ឈ្មោះទំនិញ:</label> 
-                    <input type="text" id="itemName" placeholder="បញ្ចូលឈ្មោះទំនិញ">
-                </div>
-                <div>
-                    <label for="quantity">ចំនួន:</label> 
-                    <input type="number" id="quantity" min="1" value="1">
-                </div>
-                <div>
-                    <label for="unitPrice">តម្លៃរាយ:</label> 
-                    <input type="number" id="unitPrice" min="0" step="0.01" value="0">
-                </div>
-                <button type="button" onclick="addItem()">បន្ថែមទំនិញ</button>
+    </div>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://web.facebook.com/profile.php?id=100057608164320" target="_blank"><img src="images/image-fb.png" alt="Facebook"></a>
+                <a href="https://www.tiktok.com/@saintfranciostechnical_0?is_from_webapp=1&sender_device=pc" target="_blank"><img src="images/tiktok.png.png" alt="TikTok"></a>
+                <a href="https://maps.app.goo.gl/d4KBUvoBrhWEQMko6" target="_blank"><img src="images/image-google map.png" alt="Google Maps"></a>
             </div>
-        </form>
-
-        <hr>
-
-        <div class="invoice-details">
-            <h2>បញ្ជីទំនិញ</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 5%;">ល.រ</th>
-                        <th style="width: 40%;">ឈ្មោះទំនិញ</th>
-                        <th style="width: 15%;">ចំនួន</th>
-                        <th style="width: 20%;">តម្លៃរាយ</th>
-                        <th style="width: 20%;">តម្លៃសរុបរង</th>
-                    </tr>
-                </thead>
-                <tbody id="invoiceItems">
-                    </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4" style="text-align: right; padding-right: 20px;"><strong>សរុបទាំងអស់:</strong></td> 
-                        <td id="totalAmount">0.00 ដុល្លារ</td>
-                    </tr>
-                </tfoot>
-            </table>
+            <p data-lang="footerLocation">ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ​</p>
+            <p data-lang="footerCopyright">© ២០២៥ Saint Francois General Knowledge And Private Technical High School រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
         </div>
+    </footer>
 
-        <button type="button" class="generate-invoice-btn" onclick="generateInvoice()">ចេញវិក័យប័ត្រ</button>
+    <div class="popup-overlay" id="popupOverlay">
+        <span class="popup-close" id="popupClose">×</span>
+        <div class="popup-content">
+            <img src="" alt="Popup Image" id="popupImage">
+        </div>
     </div>
 
     <script>
-        // JavaScript Codes (មុខងារគណនា)
-        let totalInvoiceAmount = 0;
-        let invoiceItemsData = []; // អារេសម្រាប់ផ្ទុកទិន្នន័យទំនិញ
-        let currentCurrency = 'USD'; // Default currency
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('.main-menu ul li a');
+        const pageContents = document.querySelectorAll('.page-content');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainMenu = document.querySelector('.main-menu');
 
-        const USD_TO_KHR_RATE = 4100; // អត្រាប្តូរប្រាក់ 1 ដុល្លារ = 4100 រៀល
+        menuToggle.addEventListener('click', function() {
+            mainMenu.classList.toggle('menu-open');
+        });
 
-        function formatNumberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        function showPage(pageId) {
+            pageContents.forEach(page => { page.style.display = 'none'; });
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) { targetPage.style.display = 'block'; }
         }
 
-        function updateCurrencySymbol() {
-            currentCurrency = document.getElementById('currencySelect').value;
-            // Update the display of existing total if any
-            document.getElementById('totalAmount').textContent = formatCurrency(totalInvoiceAmount, currentCurrency);
-            // Re-render items to update their currency display
-            renderInvoiceItems();
+        function setActiveLink(clickedLink) {
+            menuLinks.forEach(link => { link.classList.remove('active'); });
+            clickedLink.classList.add('active');
         }
 
-        function formatCurrency(amount, currency) {
-            if (currency === 'USD') {
-                return amount.toFixed(2) + ' ដុល្លារ';
-            } else if (currency === 'KHR') {
-                return formatNumberWithCommas((amount * USD_TO_KHR_RATE).toFixed(0)) + ' រៀល';
-            }
-            return amount.toFixed(2);
-        }
-
-        function renderInvoiceItems() {
-            const tableBody = document.getElementById('invoiceItems');
-            tableBody.innerHTML = ''; // Clear existing rows
-
-            invoiceItemsData.forEach((item, index) => {
-                const newRow = tableBody.insertRow();
-                const cell1 = newRow.insertCell(0);
-                const cell2 = newRow.insertCell(1);
-                const cell3 = newRow.insertCell(2);
-                const cell4 = newRow.insertCell(3);
-                const cell5 = newRow.insertCell(4);
-
-                cell1.textContent = index + 1; // ល.រ
-                cell2.textContent = item.name;
-                cell3.textContent = item.qty;
-                cell4.textContent = formatCurrency(item.price, currentCurrency);
-                cell5.textContent = formatCurrency(item.total, currentCurrency);
-            });
-        }
-
-        function addItem() {
-            const itemNameInput = document.getElementById('itemName');
-            const quantityInput = document.getElementById('quantity');
-            const unitPriceInput = document.getElementById('unitPrice');
-
-            const itemName = itemNameInput.value.trim(); // Trim whitespace
-            const quantity = parseFloat(quantityInput.value);
-            const unitPrice = parseFloat(unitPriceInput.value);
-
-            // ពិនិត្យមើលថាព័ត៌មានត្រូវបានបញ្ចូលត្រឹមត្រូវ
-            if (!itemName || isNaN(quantity) || isNaN(unitPrice) || quantity <= 0 || unitPrice < 0) {
-                alert('សូមបញ្ចូលព័ត៌មានទំនិញអោយបានត្រឹមត្រូវ (ឈ្មោះ, ចំនួន > 0, តម្លៃរាយ >= 0)!');
-                return;
-            }
-
-            const itemTotal = quantity * unitPrice;
-            totalInvoiceAmount += itemTotal;
-
-            // រក្សាទុកទិន្នន័យទំនិញ
-            invoiceItemsData.push({
-                name: itemName,
-                qty: quantity,
-                price: unitPrice,
-                total: itemTotal
-            });
-
-            renderInvoiceItems(); // Render all items again to show new one and ensure correct currency
-            document.getElementById('totalAmount').textContent = formatCurrency(totalInvoiceAmount, currentCurrency);
-
-            // សម្អាតទម្រង់បន្ទាប់ពីបន្ថែមទំនិញ
-            itemNameInput.value = '';
-            quantityInput.value = '1';
-            unitPriceInput.value = '0';
-            itemNameInput.focus(); // ផ្ដោតទៅលើប្រអប់ឈ្មោះទំនិញវិញ
-        }
-
-        function generateInvoice() {
-            if (invoiceItemsData.length === 0) {
-                alert('សូមបន្ថែមទំនិញយ៉ាងហោចណាស់មួយមុខដើម្បីបង្កើតវិក័យប័ត្រ!');
-                return;
-            }
-
-            const customerName = document.getElementById('customerName').value;
-            const customerAddress = document.getElementById('customerAddress').value;
-            const customerPhone = document.getElementById('customerPhone').value;
-            const currentDate = new Date().toLocaleDateString('km-KH', { day: '2-digit', month: '2-digit', year: 'numeric' });
-            const displayTotal = formatCurrency(totalInvoiceAmount, currentCurrency);
-
-            // បង្កើតទិន្នន័យសម្រាប់ទំព័រវិក័យប័ត្រថ្មី
-            let invoiceContent = `
-                <!DOCTYPE html>
-                <html lang="km">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=800">
-                    <title>វិក័យបត្រ - NH បោះអាហារ</title>
-                    <link href="https://fonts.googleapis.com/css2?family=Khmer+OS+Battambang&display=swap" rel="stylesheet">
-                    <style>
-                        body {
-                            font-family: 'Khmer OS Battambang', sans-serif;
-                            margin: 0;
-                            padding: 0;
-                            background-color: #f8f8f8;
-                        }
-                        .invoice-page {
-                            width: 800px; /* Fixed width to match viewport */
-                            margin: 20px auto; /* Center the page */
-                            background-color: #fff;
-                            padding: 30px;
-                            border: 1px solid #ddd;
-                            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                            box-sizing: border-box;
-                        }
-                        .header-section {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: flex-start;
-                            margin-bottom: 20px;
-                        }
-                        .logo-info {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: flex-start;
-                        }
-                        .logo-info img {
-                            max-width: 150px;
-                            height: auto;
-                            margin-bottom: 10px;
-                            border-radius: 50%;
-                            margin-top: -10px;
-                        }
-                        .company-details {
-                            text-align: left;
-                            margin-top: -10px;
-                        }
-                        .company-details p {
-                            margin: 0;
-                            font-size: 1.1em;
-                            color: #555;
-                            text-align: left;
-                            
-                        }
-                        .invoice-details-right {
-                            text-align: right;
-                            padding-top: 50px;
-                            margin-top: 70px;
-                        }
-                        .invoice-details-right p {
-                            margin: 5px 0;
-                            font-size: 1.1em;
-                        }
-                        .invoice-title {
-                            text-align: center;
-                            font-size: 1.5em;
-                            margin-top: -30px;
-                            text-decoration: underline;
-                        }
-                        table {
-                            width: 100%;
-                            border-collapse: collapse;
-                            margin-top: -20px;
-                        }
-                        table th, table td {
-                            border: 1px solid #000;
-                            padding: 7px;
-                            text-align: left;
-                        }
-                        table th {
-                            background-color: #f2f2f2;
-                            font-weight: bold;
-                            text-align: center;
-                        }
-                        table td:nth-child(1) { text-align: center; }
-                        table td:nth-child(3), table td:nth-child(4) {
-                            text-align: center;
-                        }
-                        table tfoot td {
-                            font-size: 1.1em;
-                            font-weight: bold;
-                            background-color: #e6f7ff;
-                        }
-                        table tfoot td:last-child {
-                            text-align: center;
-                        }
-                        .payment-info {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            margin-top: -20px;
-                            text-align: center;
-                        }
-                        .qr-codes {
-                            display: flex;
-                            justify-content: center;
-                            gap: 20px;
-                            margin-bottom: -10px;
-                        }
-                        .qr-codes img {
-                            max-width: 150px;
-                            height: auto;
-                            margin-top: 20px;
-                        }
-                        .aba-info {
-                            font-weight: bold;
-                            font-size: 1.1em;
-                            margin-bottom: -30px;
-                        }
-                        .signatures {
-                            display: flex;
-                            justify-content: space-around;
-                            width: 100%;
-                            margin-top: -30px;
-                        }
-                        .signature-box {
-                            width: 45%;
-                            text-align: center;
-                        }
-                        .signature-line {
-                            border-top: 1px solid #000;
-                            margin-top: -30px;
-                            display: inline-block;
-                            width: 100%;
-                        }
-                        .thank-you {
-                            text-align: center;
-                            margin-top: -30px;
-                            font-style: italic;
-                            color: #555;
-                            font-size: 1.2em;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="invoice-page">
-                        <div class="header-section">
-                            <div class="logo-info">
-                                <img src="images/Logo.png" alt="Company Logo">
-                                <div class="company-details">
-                                    <p>ឈ្មោះអតិថិជន: ${customerName || ' '}</p> 
-                                    <p>អាសយដ្ឋាន: ${customerAddress || ' '}</p> 
-                                    <p>លេខទូរស័ព្ទ: ${customerPhone || ' '}</p> 
-                                </div>
-                            </div>
-                            <div class="invoice-details-right">
-                                <p>កាលបរិច្ឆេទ: ${currentDate}</p> 
-                                <p>លេខទំនាក់ទំនង: 010 90 72 71</p> 
-                                <p>016 661 138</p> 
-                            </div>
-                        </div>
-
-                        <h2 class="invoice-title">វិក័យបត្រ / Invoice</h2> 
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th style="width: 5%;">ល.រ</th> 
-                                    <th style="width: 40%;">មុខទំនិញ</th> 
-                                    <th style="width: 15%;">ចំនួន</th> 
-                                    <th style="width: 20%;">តម្លៃរាយ</th> 
-                                    <th style="width: 20%;">តម្លៃសរុប</th> 
-                                </tr>
-                            </thead>
-                            <tbody>
-            `;
-
-            invoiceItemsData.forEach((item, index) => {
-                invoiceContent += `
-                                <tr>
-                                    <td>${index + 1}</td>
-                                    <td>${item.name}</td>
-                                    <td>${item.qty}</td>
-                                    <td>${formatCurrency(item.price, currentCurrency)}</td>
-                                    <td>${formatCurrency(item.total, currentCurrency)}</td>
-                                </tr>
-                `;
-            });
-
-            const remainingRows = 5 - invoiceItemsData.length;
-            if (remainingRows > 0) {
-                for (let i = 0; i < remainingRows; i++) {
-                    invoiceContent += `
-                                    <tr>
-                                        <td>${invoiceItemsData.length + i + 1}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                    `;
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showPage(targetId);
+                setActiveLink(this);
+                if (mainMenu.classList.contains('menu-open')) {
+                    mainMenu.classList.remove('menu-open');
                 }
-            }
-            
-            invoiceContent += `
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="4" style="text-align: right; padding-right: 20px;"><strong>តម្លៃសរុបទាំងអស់/Total</strong></td> 
-                                    <td style="text-align: center;"><strong>${displayTotal}</strong></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" style="text-align: right; padding-right: 20px;">កក់មុន/Deposit</td> 
-                                    <td style="text-align: center;">_________</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" style="text-align: right; padding-right: 20px;">នៅខ្វះ/Balance</td> 
-                                    <td style="text-align: center;">_________</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-
-                        <div class="payment-info">
-                            <div class="qr-codes">
-                                <img src="images/QR $.jpg" alt="QR Code USD"> 
-                                <img src="images/QR real.jpg" alt="QR Code KHR">
-                            </div>
-                            <div class="aba-info">
-                                <p>ABA ឈ្មោះ HOUN NHAN</p> 
-                            </div>
-                        </div>
-
-                        <div class="signatures">
-                            <div class="signature-box">
-                                <p>អ្នកទិញ</p> 
-                                <span class="signature-line"></span>
-                            </div>
-                            <div class="signature-box">
-                                <p>អ្នកលក់</p> 
-                                <span class="signature-line"></span>
-                            </div>
-                        </div>
-
-                        <div class="thank-you">
-                            <p>សូមអរគុណ! សម្រាប់ការគាំទ្រ !!</p> 
-                        </div>
-                    </div>
-                </body>
-                </html>
-            `;
-
-            const newWindow = window.open('', '_blank');
-            newWindow.document.write(invoiceContent);
-            newWindow.document.close();
+                window.scrollTo(0, 0); 
+            });
+        });
+        
+        const initialHash = window.location.hash.substring(1);
+        if (initialHash && document.getElementById(initialHash)) {
+            showPage(initialHash);
+            const activeLink = document.querySelector(`.main-menu ul li a[href="#${initialHash}"]`);
+            if (activeLink) setActiveLink(activeLink);
+        } else {
+            showPage('home');
+            setActiveLink(document.querySelector('.main-menu ul li a[href="#home"]'));
         }
+        
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slideshow-container .slide");
+        function showSlides() {
+            if (slides.length === 0) return;
+            slides.forEach(slide => slide.style.display = "none");
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 4000); 
+        }
+        showSlides();
+        
+        const popupOverlay = document.getElementById('popupOverlay');
+        const popupImage = document.getElementById('popupImage');
+        const popupClose = document.getElementById('popupClose');
+        window.openPopup = function(src) {
+            popupImage.src = src;
+            popupOverlay.style.display = 'flex';
+        }
+        function closePopup() { popupOverlay.style.display = 'none'; }
+        popupClose.addEventListener('click', closePopup);
+        popupOverlay.addEventListener('click', function(e) { if (e.target === popupOverlay) { closePopup(); } });
+        
+        const accordionTitles = document.querySelectorAll('.accordion-title');
+        accordionTitles.forEach(title => {
+            title.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                this.classList.toggle('active');
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Form Submission with AJAX (Fetch)
+        const form = document.getElementById('sfs-form');
+        const formContainer = document.getElementById('registration-form-container');
+        const successMessage = document.getElementById('form-success-message');
+        
+        if(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); 
+                
+                const submitButton = form.querySelector('.submit-button');
+                submitButton.disabled = true;
+                submitButton.textContent = 'កំពុងបញ្ជូន...';
+
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        formContainer.style.display = 'none';
+                        successMessage.style.display = 'block';
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert('មានបញ្ហាក្នុងការបញ្ជូនទិន្នន័យ សូមព្យាយាមម្តងទៀត។');
+                            }
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'បញ្ជូន';
+                        });
+                    }
+                }).catch(error => {
+                    alert('មានបញ្ហាបណ្តាញ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក។');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'បញ្ជូន';
+                });
+            });
+        }
+
+        // Language Translation
+        const translations = {
+            // Change 2: Add this new object for the welcome image
+            welcomeImage: {
+                km: { src: 'images/welcome.png', alt: 'សូមស្វាគមន៍មកកាន់វិទ្យាល័យ' },
+                en: { src: 'images/welcome Eng.png', alt: 'Welcome to the High School' }
+            },
+            homeLink: { km: 'ទំព័រដើម', en: 'Home' }, 
+            aboutLink: { km: 'អំពីសាលា', en: 'About Us' }, 
+            majorsLink: { km: 'ជំនាញសិក្សា', en: 'Majors' }, 
+            locationLink: { km: 'ទីតាំង', en: 'Location' }, 
+            contactLink: { km: 'ទំនាក់ទំនង', en: 'Contact' }, 
+            photosLink: { km: 'ទស្សនៈកិច្ចសិក្សា', en: 'Field Trips' }, 
+            registerLink: { km: 'ចុះឈ្មោះចូលរៀន', en: 'Register' }, 
+            aboutHeading: { km: 'ប្រវត្តិសាលា', en: 'School History' }, 
+            aboutText: { km: `ក្នុងឆ្នាំ ២០០៣ ព្រះសហគមន៍កាតូលិកចំការទៀង ដែលមានលោកអភិបាល អូលីវីយេ ក្នុងនាមជាអ្នកទទួលខុសត្រូវ ហើយលោកជាប្រធានគណៈកម្មការអប់រំសិក្សាធិការព្រះសហគមន៍កាតូលិកភូមិភាគភ្នំពេញ។ ដោយសង្កេតឃើញភាពក្រីក្រលំបាក សិស្សបោះបង់ការសិក្សាច្រើន ដោយសារពុំមានលទ្ធភាពបន្តការសិក្សានៅភ្នំពេញ លោកអភិបាលមានគំនិតបង្កើតវិទ្យាល័យបច្ចេកទេស។ ប៉ុន្តែពេលនោះ ពុំមានមធ្យោបាយអាចដំណើរការទៅបាន។ លោកអភិបាលក៏សម្រេចចិត្តបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបណ្តុះបណ្តាលវិជ្ជាជីវៈ សន្តហ្វ្រង់ស្វ័រ ដោយបន្ថែមកម្មវិធីសិក្សាជំនាញមួយចំនួនដូចជា កសិកម្ម លេខាធិការ និងតម្បាញសូត្រ។ ចាប់តាំងពីឆ្នាំ ២០០៣ រហូតដល់ឆ្នាំ ២០១៥ លោកអភិបាលបន្តចិញ្ចឹមចិត្តបង្កើតសាលាបច្ចេកទេស ក្នុងគោលបំណងឱ្យសិស្សក្រីក្រ និង សិស្សពុំមានសមត្ថភាពរៀនផ្នែកចំណេះទូទៅទទួលបានឱកាសសិក្សាផ្នែកអប់រំបច្ចេកទេសដើម្បីឱ្យពួកគេទទួលបាន ជំនាញយ៉ាងពិតប្រាកដដើម្បីឱ្យពួកគេមានលទ្ធភាព សមត្ថភាពកសាងជីវភាពរស់នៅ និងកាត់បន្ថយភាពក្រីក្រនៅតាមជនបទ។ ក្នុងឆ្នាំ២០១៥ ក្រសួងអប់រំយុវជន និងកីឡា បានធ្វើកំណែទម្រង់ដោយផ្តោតសំខាន់លើការបណ្តុះបណ្តាលផ្នែកអប់រំបច្ចេកទេស។ ដោយមើលឃើញឱកាសដ៏ល្អនេះ លោកអភិបាលអូលីវីយ៉េបានចាប់ផ្តើមបង្កើតគណៈកម្មការមួយដើម្បីធ្វើការសម្របសម្រួលសុំបង្កើតវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស្វ័រនេះឡើង ហើយបានសម្រេចជាស្ថាពរក្នុងឆ្នាំ ២០១៥ តាមសារាចរណ៍លេខ ២៥១៩ អយកប្រក ចុះថ្ងៃទី ០២ ខែកញ្ញា ឆ្នាំ ២០១៥ ។`, en: `In 2003, the Catholic Community of Chamkar Teang, led by Bishop Olivier as the person in charge and Chairman of the Education Committee of the Catholic Diocese of Phnom Penh. Observing the poverty and difficulties, many students dropped out of school due to the inability to continue their studies in Phnom Penh, the Bishop conceived the idea of establishing a technical high school. However, at that time, there were no means to proceed. The Bishop decided to establish Saint Francois General Knowledge and Vocational High School, adding several vocational training programs such as Agriculture, Secretarial, and Silk Weaving. From 2003 to 2015, the Bishop continued to nurture the idea of establishing a technical school with the aim of providing poor students and those unable to pursue general education with opportunities to study technical education, enabling them to gain real skills, build their livelihoods, and alleviate poverty in rural areas. In 2015, the Ministry of Education, Youth and Sport reformed by focusing on technical education training. Seeing this excellent opportunity, Bishop Olivier began forming a committee to facilitate the establishment of Saint Francois General Knowledge and Private Technical High School, which was officially approved in 2015 by Circular No. 2519 OYK.Prak dated September 02, 2015.`}, 
+            majorsHeading: { km: 'ជំនាញសិក្សា', en: 'Majors' }, 
+            agricultureMajor: { km: 'ក្សេត្រសាស្ត្រ', en: 'Agriculture' }, 
+            agricultureCurriculum: { km: 'កម្មវិធីសិក្សា:', en: 'Curriculum:' }, 
+            agricultureCurriculumContent: { km: 'ការសិក្សាគ្រប់ជ្រុងជ្រោយអំពីការអនុវត្តកសិកម្ម ការដាំដុះដំណាំ ការចិញ្ចឹមសត្វ និងបច្ចេកទេសធ្វើកសិកម្មប្រកបដោយនិរន្តរភាព។', en: 'Comprehensive study of agricultural practices, crop cultivation, animal husbandry, and sustainable farming techniques.' }, 
+            agricultureMidterm: { km: 'មុខវិជ្ជាប្រឡងឆមាស:', en: 'Midterm Subjects:' }, 
+            agricultureMidtermContent: { km: 'ការប្រឡងគ្របដណ្តប់លើវិទ្យាសាស្ត្រដំណាំ ការគ្រប់គ្រងដី និងការចិញ្ចឹមសត្វជាមូលដ្ឋាន។', en: 'Exams cover Crop Science, Soil Management, and Basic Livestock.' }, 
+            agricultureFinal: { km: 'មុខវិជ្ជាប្រឡងបញ្ចប់:', en: 'Final Subjects:' }, 
+            agricultureFinalText: { km: 'សិស្សត្រូវប្រឡងជំនាញជាក់លាក់ និងសរសេរកិច្ចការស្រាវជ្រាវ។', en: 'Students must take a practical skills examination and submit a research paper.' }, 
+            officeMajor: { km: 'ការិយាល័យជួរមុខ', en: 'Front Office' }, 
+            officeCurriculum: { km: 'កម្មវិធីសិក្សា:', en: 'Curriculum:' }, 
+            officeCurriculumContent: { km: 'សិក្សាអំពីនីតិវិធីរដ្ឋបាល សេវាកម្មអតិថិជន ជំនាញទំនាក់ទំនង និងការគ្រប់គ្រងការិយាល័យ។', en: 'Study of administrative procedures, customer service, communication skills, and office management.' }, 
+            officeMidterm: { km: 'មុខវិជ្ជាប្រឡងឆមាស:', en: 'Midterm Subjects:' }, 
+            officeMidtermContent: { km: 'ការប្រឡងរួមមាន រដ្ឋបាលការិយាល័យ ទំនាក់ទំនងអាជីវកម្ម និងកម្មវិធីកុំព្យូទ័រ។', en: 'Exams include Office Administration, Business Communication, and Computer Applications.' }, 
+            officeFinal: { km: 'មុខវិជ្ជាប្រឡងបញ្ចប់:', en: 'Final Subjects:' }, 
+            officeFinalText: { km: 'សិស្សត្រូវប្រឡងជំនាញជាក់លាក់ និងសរសេរកិច្ចការស្រាវជ្រាវ។', en: 'Students must take a practical skills examination and submit a research paper.' }, 
+            locationHeading: { km: 'ទីតាំង', en: 'Location' }, 
+            locationText: { km: 'ផ្លូវជាតិលេខ៣ ភូមិអង្គរគគីរ ឃុំតាភេម ស្រុកត្រាំកក់ ខេត្តតាកែវ ខាងជើងផ្សារអង្គតាសោម ៣គីឡូម៉ែត្រ', en: 'National Road 3, Angkor Kokir Village, Taphem Commune, Tram Kak District, Takeo Province, 3 km North of Angkor Tasom Market.' }, 
+            openMap: { km: 'មើលផែនទី', en: 'Open Map' }, 
+            contactHeading: { km: 'ទំនាក់ទំនង', en: 'Contact Us' }, 
+            emailText: { km: 'អ៊ីម៉ែល:', en: 'Email:' }, 
+            phonenumber: { km: 'លេខទូរស័ព្ទ:', en: 'Phone number:' }, 
+            photosHeading: { km: 'ទស្សនៈកិច្ចសិក្សា', en: 'Field Trips' }, 
+            group1Title: { km: 'ដំណើរទស្សនកិច្ចសិក្សា ជំនាញកសិកម្ម(ក្សេត្រសាស្ត្រ) ឆ្នាំទី៣', en: 'Field Trip for Agriculture Major, Year 3' }, 
+            group1Text: { km: `នៅថ្ងៃអង្គារ ៩រោច ខែពិសាខ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស. ២៥៦៩ ត្រូវនឹងថ្ងៃទី២០ ខែឧសភា ឆ្នាំ២០២៥។ ការចុះទស្សនកិច្ចសិក្សារបស់សិស្សឆ្នាំទី៣ ជាមួយលោកគ្រូ-អ្នកគ្រូ ដើម្បីស្វែងយល់អំពីមុខវិជ្ជាផ្សេងៗ ក៏ដូចជាចំណេះដឹងថី្មៗជាច្រើនបន្ថែមទៀតនៃវិទ្យាស្ថានបច្ចេកវិទ្យាកំពង់ស្ពឺ សម្រាប់ជួយបំភ្លឺផ្លូវរបស់ប្អូនៗនៅពេលអនាគត។ ២០.០៥.២០២៥ ➡️ (រៀនពិត អនុវត្តន៍ពិត បទពិសោធន៍ពិតៗ)`, en: `On Tuesday, the 9th waning moon of Visak, Year of the Snake, Buddhist Era 2569, corresponding to May 20, 2025. A field trip for Year 3 students with teachers to learn about various subjects and gain new knowledge from Kampong Speu Institute of Technology, to help guide their future. 20.05.2025 (True learning, true practice, true experience)` }, 
+            group2Title: { km: 'ដំណើរទស្សនកិច្ចសិក្សា ជំនាញការិយាល័យជួរមុខ ឆ្នាំទី២ ជំនាន់ទី៦', en: 'Field Trip for Front Office Major, Year 2, Batch 6' }, 
+            group2Text: { km: `នាថ្ងៃសុក្រ ១១កើត ខែជេស្ឋ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស.២៥៦៩ ត្រូវនឹងថ្ងៃទី០៦ ខែមិថុនា ឆ្នាំ២០២៥ ដំណើរទស្សនកិច្ចសិក្សារយៈពេល១ថ្ងៃ របស់សិស្សានុសិស្សជំនាញការិយាល័យជួរមុខ ឆ្នាំទី២ ជំនាន់ទី៦ នៃវិទ្យាល័យចំណេះទូទៅនិងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស័្វររួមមាន៖<br>1. ក្រុមហ៊ុន Thalias Hospitality ទស្សនៈកិច្ចសិក្សាទៅកាន់ភោជនីយដ្ឋាន Topaz ទាំងពីរទីតាំង<br>2. Topaz (ផ្លូវនរោត្តម)ស្ថិតនៅលើផ្លូវលេខ ១៦២ ផ្លូវនរោត្តម (Preah Norodom Blvd), ភ្នំពេញ<br>3. Topaz (The Commune – ទួលគោក) ស្ថិតនៅជាន់ទី១ ក្នុងអាគារ The Commune, ផ្លូវលេខ ៣៤៧, សង្កាត់ទួលគោក, ភ្នំពេញ<br>4. ក្រុមហ៊ុន Almond Hospitality ទស្សនៈកិច្ចសិក្សានៅក្នុង Yi Sang The Garden ស្ថិតលើផ្លូវលេខ 337, សង្កាត់បឹងកុក 1, ខ័ណ្ឌទួលគោក, ភ្នំពេញ<br> ➡️ គោលបំណងនៃដំណើរទស្សនកិច្ចសិក្សាមានដូចជា៖<br>1. បង្កើនការយល់ដឹងបន្ថែមដល់សិស្សានុសិស្សលើដំណើរការប្រតិបត្តិការ ផ្នែការិយាល័យជួរមុខ ផ្នែកគេហកិច្ច និងផ្នែកសេវាកម្មអាហារ និងភេសជ្ជៈ ដើម្បីជារូបភាពក្នុងការពង្រឹងនូវពុទ្ធិបន្ថែមផ្សារភ្ជាប់ការសិក្សាទ្រឹស្តី និងការអនុវត្តផ្ទាល់។<br>2. បង្កើនទំនាក់ទំនងល្អរវាងស្ថាប័នទេសចរណ៍ និងក្រុមហ៊ុនបដិសណ្ឋារកិច្ច ជាមួយនឹងវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជន សន្តហ្វ្រង់ស្វ័រ និងជាការបង្កើតកិច្ចសហប្រតិបត្តិការល្អជាមួយគ្នាទៅវិញទៅមក និងឱកាសការងារសម្រាប់សិស្សានុសិស្សដែលសិក្សាលើជំនាញបច្ចេកទេស។`, en: `On Friday, the 11th waxing moon of Jeṣṭha, Year of the Snake, Buddhist Era 2569, corresponding to June 06, 2025. A one-day field trip for Year 2, Batch 6 students of the Front Office Major from Saint Francois General Knowledge and Private Technical High School, including:<br>1. Thalias Hospitality Company: Field trip to both Topaz restaurant locations.<br>2. Topaz (Norodom Blvd) located at No. 162, Preah Norodom Blvd, Phnom Penh.<br>3. Topaz (The Commune – Tuol Kork) located on the 1st floor of The Commune building, No. 347, Sangkat Tuol Kork, Phnom Penh.<br>4. Almond Hospitality Company: Field trip to Yi Sang The Garden located at No. 337, Sangkat Boeung Kak 1, Khan Tuol Kork, Phnom Penh.<br> ➡️ The objectives of the field trip are:<br>1. To enhance students' understanding of front office operations, housekeeping, and food and beverage services, providing practical reinforcement of theoretical studies.<br>2. To foster good relationships between tourism institutions and hospitality companies with Saint Francois General Knowledge and Private Technical High School, establishing good cooperation and job opportunities for students studying technical skills.` }, 
+            group3Title: { km: 'ដំណើរទស្សនកិច្ចសិក្សា ជំនាញការិយាល័យជួរមុខ ឆ្នាំទី៣ ជំនាន់ទី៥', en: 'Field Trip for Front Office Major, Year 3, Batch 5' }, 
+            group3Text: { km: `នាថ្ងៃចន្ទ ១២កើត ខែអាសាឍ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស.២៥៦៩ ត្រូវនឹងថ្ងៃទី០៧ ខែកក្កដា ឆ្នាំ២០២៥ ដំណើរទស្សនកិច្ចសិក្សារយៈពេល១ថ្ងៃ របស់សិស្សានុសិស្សជំនាញការិយាល័យជួរមុខ ឆ្នាំទី៣ ជំនាន់ទី៥ នៃវិទ្យាល័យចំណេះទូទៅនិងបច្ចេកទេស ឯកជន សន្តហ្រ្វង់ស័្វររួមមាន៖<br>1. សហគមន៍អេកូទេសចរណ៍ចំបក់<br>2. ឧទ្យានជាតិ ព្រះសុរាម្រិតកុសមៈ គិរីរម្យ<br>➡️ គោលបំណងនៃដំណើរទស្សនកិច្ចសិក្សាមានដូចជា៖<br>1. បង្កើនការយល់ដឹងបន្ថែមដល់សិស្សានុសិស្សស្វែងយល់ពីការគ្រប់គ្រងក្នុងសហគមន៍អេកូទេសចរណ៍ចំបក់ដើម្បីទទួលបានបទពិសោធន៍ថ្មីៗពាក់ព័ន្ធទៅនឹងការអភិរក្សលើធនធានធម្មជាតិ និងការចូលរួមរបស់ប្រជាជនដែលជាសមាជិកក្នុងសកម្មភាពអភិវឌ្ឍន៍សហគមន៍ទេសចរណ៍។<br>2. បង្កើនទំនាក់ទំនងល្អរវាងស្ថាប័នទេសចរណ៍ និងក្រុមហ៊ុនបដិសណ្ឋារកិច្ច ជាមួយនឹងវិទ្យាល័យចំណេះទូទៅ និងបច្ចេកទេសឯកជន សន្តហ្វ្រង់ស្វ័រ និងជាការបង្កើតកិច្ចសហប្រតិបត្តិការល្អជាមួយគ្នាទៅវិញទៅមក និងឱកាសការងារសម្រាប់សិស្សានុសិស្សដែលសិក្សាលើជំនាញបច្ចេកទេស។`, en: `On Monday, the 12th waxing moon of Āṣāṛha, Year of the Snake, Buddhist Era 2569, corresponding to July 07, 2025. A one-day field trip for Year 3, Batch 5 students of the Front Office Major from Saint Francois General Knowledge and Private Technical High School, including:<br>1. Chambok Eco-tourism Community.<br>2. Preah Suramarit Kosamak Kirirom National Park.<br>➡️ The objectives of the field trip are:<br>1. To enhance students' understanding of community management in the Chambok Eco-tourism Community, gaining new experiences related to natural resource conservation and the participation of community members in tourism development activities.<br>2. To foster good relationships between tourism institutions and hospitality companies with Saint Francois General Knowledge and Private Technical High School, establishing good cooperation and job opportunities for students studying technical skills.` }, 
+            registerHeading: { km: 'ទម្រង់ចុះឈ្មោះចូលរៀន', en: 'Enrollment Form' }, 
+            studentInfoLegend: { km: 'ព័ត៌មានសិស្ស', en: 'Student Information' }, 
+            nameKhmerLabel: { km: 'ឈ្មោះ (ខ្មែរ)៖', en: 'Name (Khmer):' }, 
+            nameEnglishLabel: { km: 'Name (អង់គ្លេស)៖', en: 'Name (English):' }, 
+            genderLabel: { km: 'ភេទ៖', en: 'Gender:' }, 
+            maleOption: { km: 'ប្រុស', en: 'Male' }, 
+            femaleOption: { km: 'ស្រី', en: 'Female' }, 
+            dobLabel: { km: 'ថ្ងៃ ខែ ឆ្នាំកំណើត៖', en: 'Date of Birth:' }, 
+            birthPlaceLabel: { km: 'ទីកន្លែងកំណើត ៖', en: 'Place of Birth:' }, 
+            currentAddressLabel: { km: 'ទីលំនៅបច្ចុប្បន្ន ៖', en: 'Current Address:' }, 
+            juniorHighLabel: { km: 'មកពីអនុវិទ្យាល័យ ៖', en: 'From Junior High School:' }, 
+            personalPhoneLabel: { km: 'លេខទូរស័ព្ទ (ផ្ទាល់ខ្លួន) ៖', en: 'Personal Phone Number:' }, 
+            parentInfoLegend: { km: 'ព័ត៌មានអាណាព្យាបាល', en: 'Guardian Information' }, 
+            fatherNameLabel: { km: 'ឈ្មោះឪពុក ៖', en: 'Father\'s Name:' }, 
+            motherNameLabel: { km: 'ឈ្មោះម្តាយ ៖', en: 'Mother\'s Name:' }, 
+            guardianPhoneLabel: { km: 'លេខទូរស័ព្ទ (អាណាព្យាបាល) ៖', en: 'Guardian\'s Phone Number:' }, 
+            submitButton: { km: 'បញ្ជូន', en: 'Submit' }
+        };
+
+        // Change 3: UPDATED the setLanguage function
+        window.setLanguage = function(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[key] && translations[key][lang]) {
+                    
+                    // Special check for the welcome image
+                    if (key === 'welcomeImage') {
+                        const imageData = translations[key][lang];
+                        if (element.tagName === 'IMG') {
+                            element.src = imageData.src;
+                            element.alt = imageData.alt;
+                        }
+                    } else {
+                        // Original logic for all other text elements
+                        element.innerHTML = translations[key][lang];
+                    }
+                }
+            });
+            document.documentElement.lang = lang; 
+        }
+        setLanguage('km');
+    });
     </script>
 </body>
 </html>
